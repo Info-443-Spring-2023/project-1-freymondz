@@ -1,14 +1,19 @@
+import NavBar from "../NavBar/NavBar"
+import OrgList from "../OrgList/OrgList"
 
 
 
-const HomePage2: React.FC = () => {
-
+const HomePage: React.FC = () => {
     return (
-        <h1>Hi</h1>
-        
+        <>
+            <h1>Hi</h1>
+            <NavBar/>
+            <OrgList/>
+                   
+        </>
     )
 
 }
 
 
-export default HomePage2
+export default HomePage

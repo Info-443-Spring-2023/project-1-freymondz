@@ -2,12 +2,13 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import HomePage2 from './features/HomePage/HomePage2';
+import HomePage from './features/HomePage/HomePage2';
 
 function App() {
   return (
     <>
-        <HomePage2 />
-        <div className="App">
+        <HomePage />
+        {/* <div className="App">
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <p>
@@ -22,7 +23,7 @@ function App() {
               Learn React
             </a>
           </header>
-        </div>
+        </div> */}
     </>
 
   );
