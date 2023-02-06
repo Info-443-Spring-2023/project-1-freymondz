@@ -1,3 +1,19 @@
+
+
+
+
+# Main Features
+- Filtering System
+    - Allows users to apply filters to a list of volunteer opportunties in their area. 
+- Search feature
+    - Allows users to find volunteer opportunties via keyword search
+- Log in 
+    - Allows users to create a basic account with an email and password
+- Bookmark feature
+    - Allows logged in users are also able to bookmark volunteer postions they are interested in and/or want to apply for in the future
+- Tracker
+    - Allows logged in users to track completed volunteer hours
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
