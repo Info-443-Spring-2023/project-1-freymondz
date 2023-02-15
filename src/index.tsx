@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase/compat/app'
-
-
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, persistStore } from 'redux-persist';
+import { combineReducers, createSlice, createStore, PayloadAction } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import { store } from './store';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -32,11 +36,26 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+const rrfConfig = {
+  userProfile: 'users'
+}
 
 
-root.render(
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch
+}
+
+
+root.render(                    
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <App />
+      </ReactReduxFirebaseProvider>
+    </Provider>
   </React.StrictMode>
 );
 
@@ -44,3 +63,7 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+function configureStore(arg0: { reducer: any; }) {
+  throw new Error('Function not implemented.');
+}
+
