@@ -4,7 +4,7 @@ import HomePage2 from './features/HomePage/HomePage2';
 import HomePage from './features/HomePage/HomePage2';
 import Button from '@mui/material/Button'
 import { FormControl, Typography, Box, TextField, FormLabel, FormGroup, FormControlLabel, Checkbox, FormHelperText, Divider, CircularProgress, Link } from '@mui/material';
-// import firebase from 'firebase/compat';
+import firebase from 'firebase/compat';
 import { useFirebase, useFirebaseConnect } from 'react-redux-firebase';
 import { useDispatch } from 'react-redux';
 

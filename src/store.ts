@@ -3,7 +3,7 @@ import { OrganizationsState } from "./features/OrgList/OrgsSlice"
 import storage from "redux-persist/lib/storage"
 import { persistReducer } from "redux-persist"
 import orgReducer from './features/OrgList/OrgsSlice'
-import { composeWithDevTools } from '@reduxjs/toolkit/dist/devtoolsExtension'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const rootPersistConfig = {
     key: 'root',

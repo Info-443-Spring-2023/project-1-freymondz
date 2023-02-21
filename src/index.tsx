@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -7,10 +7,6 @@ import firebase from 'firebase/compat/app'
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import storage from 'redux-persist/lib/storage';
-import { persistReducer, persistStore } from 'redux-persist';
-import { combineReducers, createSlice, createStore, PayloadAction } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { store } from './store';
 // TODO: Add SDKs for Firebase products that you want to use
@@ -32,9 +28,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+// const root = ReactDOM.createRoot(
+//   document.getElementById('root') as HTMLElement
+// );
 
 const rrfConfig = {
   userProfile: 'users'
@@ -49,14 +45,16 @@ const rrfProps = {
 }
 
 
-root.render(                    
+ReactDOM.render(                    
   <React.StrictMode>
+    {/* <CssBaseline /> */}
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
         <App />
       </ReactReduxFirebaseProvider>
     </Provider>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
