@@ -20,8 +20,9 @@ interface UserProfile {
 }
 
 // default root state of react-redux
+// there will be more
 export type RootState = {
-    organizations: OrganizationsState
+    organizations: OrganizationsState,
 }
 
 const options = {
