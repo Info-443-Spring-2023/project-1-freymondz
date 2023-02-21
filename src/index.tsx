@@ -8,9 +8,9 @@ import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 
 // Import the functions you need from the SDKs you need
 import { Provider } from 'react-redux';
-import { store } from './store';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { persistor, store } from './store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { BrowserRouter } from 'react-router-dom'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -47,11 +47,14 @@ const rrfProps = {
 
 ReactDOM.render(                    
   <React.StrictMode>
-    {/* <CssBaseline /> */}
     <Provider store={store}>
-      <ReactReduxFirebaseProvider {...rrfProps}>
-        <App />
-      </ReactReduxFirebaseProvider>
+        <ReactReduxFirebaseProvider {...rrfProps}>
+          <BrowserRouter>
+            <PersistGate loading={null} persistor={persistor}>
+              <App />
+            </PersistGate>
+          </BrowserRouter>
+        </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
