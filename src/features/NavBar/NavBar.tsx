@@ -1,4 +1,4 @@
-import { useFirebase, useFirebaseConnect } from "react-redux-firebase"
+import { ExtendedFirebaseInstance, isEmpty, useFirebase, useFirebaseConnect } from "react-redux-firebase"
 import { useAppSelector } from "../../hooks"
 import firebase from "firebase/compat/app";
 import 'firebase/compat/database';
@@ -19,10 +19,25 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-
+import { useSelector } from "react-redux";
+import { PersistState } from "../../store";
+import {GoogleAuthProvider,getAuth, signOut } from 'firebase/auth';
+import { StyledFirebaseAuth } from "react-firebaseui";
 const pages = ['Home', 'About', 'Dashboard/Profile'];
-const settings = ['Logout'];
-
+const settings = ['Logout']
+// Configure FirebaseUI.
+const uiConfig = {
+    // Popup signin flow rather than redirect flow.
+    signInFlow: 'popup',
+    // We will display Google and Facebook as auth providers.
+    signInOptions: [
+      GoogleAuthProvider.PROVIDER_ID,
+    ],
+    callbacks: {
+      // Avoid redirects after sign-in.
+      signInSuccessWithAuthResult: () => false,
+    },
+  };
 const NavBar: React.FC = () => {
 
     const firebase = useFirebase()
@@ -48,7 +63,6 @@ const NavBar: React.FC = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
-
     return (
         <AppBar position="static" style={{ background: '#374785' }}>
             <Container maxWidth="xl">
@@ -139,39 +153,66 @@ const NavBar: React.FC = () => {
                         ))}
                     </Box>
 
-                    <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                        </Tooltip>
-                        <Menu
-                            sx={{ mt: '45px' }}
-                            id="menu-appbar"
-                            anchorEl={anchorElUser}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
-                        >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
+                    <NavSetting />
                 </Toolbar>
             </Container>
         </AppBar>
     );
 }
 
+const NavSetting: React.FC = (props) => {
+    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const auth = useSelector((state: PersistState) => state.firebase.auth)
+    // #region LoginButton
+    const firebase = useFirebase();
+    if (isEmpty(auth)) {
+        return   (
+        <Box>
+            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
+        </Box>)
+    }
+    // #endregion
+
+    // #region NavMenuItem
+    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorElUser(event.currentTarget);
+    };
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+    const handleSignOut = () => {
+        console.log("signing out");
+        signOut(getAuth());
+      }
+    return (
+        <Box sx={{ flexGrow: 0 }}>
+        <Tooltip title="Open settings">
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+            </IconButton>
+        </Tooltip>
+        <Menu
+            sx={{ mt: '45px' }}
+            id="menu-appbar"
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            keepMounted
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+        >
+            <MenuItem key={"Logout"} onClick={()=>{handleCloseUserMenu();handleSignOut()}}>
+                <Typography textAlign="center">Logout</Typography>
+            </MenuItem>
+        </Menu>
+    </Box>
+    )
+    // #endregion
+}
 export default NavBar

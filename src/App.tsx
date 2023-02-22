@@ -8,7 +8,6 @@ import firebase from 'firebase/compat';
 import { authIsReady, isLoaded, useFirebase, useFirebaseConnect } from 'react-redux-firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Outlet } from 'react-router-dom';
-import LoginPage from './features/LoginPage/LoginPage';
 import { PersistState } from './store';
 import {isEmpty } from 'react-redux-firebase';
 import { Navigate } from 'react-router-dom';
@@ -152,7 +151,6 @@ import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 function App() {
   return (
     <div>
-      <LoginPage />
       <HomePage />
     </div>
   );
