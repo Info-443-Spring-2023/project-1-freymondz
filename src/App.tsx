@@ -175,14 +175,9 @@ const RequiredAuth: React.FC = () => {
 }
 
 function App() {
-  const auth = useSelector((state: PersistState) => state.firebase.auth)
-  const handleSignOut = (event: any) => {
-    console.log("signing out");
-    signOut(getAuth());
-  }
   return (
     <>
-      {isEmpty(auth)? <LoginPage />:  <button className="btn btn-secondary ms-2" onClick={handleSignOut}>Sign Out</button>}
+      <LoginPage />
       <HomePage />
     </>
   );
