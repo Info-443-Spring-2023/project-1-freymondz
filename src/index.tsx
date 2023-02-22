@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase/compat/app'
-import { ReactReduxFirebaseProvider} from 'react-redux-firebase'
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 
 // Import the functions you need from the SDKs you need
 import { Provider } from 'react-redux';
 import { persistor, store } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { getAuth } from 'firebase/auth';
 import HomePage from './features/HomePage/HomePage2';
 
@@ -48,13 +48,13 @@ const rrfProps = {
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-        <ReactReduxFirebaseProvider {...rrfProps}>
-          <BrowserRouter>
-            <PersistGate loading={null} persistor={persistor}>
-              <HomePage />
-            </PersistGate>
-          </BrowserRouter>
-        </ReactReduxFirebaseProvider>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <BrowserRouter>
+          <PersistGate loading={null} persistor={persistor}>
+            <App />
+          </PersistGate>
+        </BrowserRouter>
+      </ReactReduxFirebaseProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

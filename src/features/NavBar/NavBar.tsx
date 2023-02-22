@@ -23,6 +23,9 @@ import { useSelector } from "react-redux";
 import { PersistState } from "../../store";
 import {GoogleAuthProvider,getAuth, signOut } from 'firebase/auth';
 import { StyledFirebaseAuth } from "react-firebaseui";
+import AboutPage from "../AboutPage/AboutPage";
+import { Navigate } from "react-router-dom";
+
 const pages = ['Home', 'About', 'Dashboard/Profile'];
 const settings = ['Logout']
 // Configure FirebaseUI.
