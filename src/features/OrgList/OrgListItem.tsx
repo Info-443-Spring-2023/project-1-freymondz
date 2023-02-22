@@ -38,7 +38,7 @@ const OrgListItem: React.FC = () => {
             <Grid item xs={12} sm container>
                 <Grid item xs container direction="column" spacing={2}>
                     <Grid item xs>
-                        <Typography gutterBottom variant="subtitle1" component="div">
+                        <Typography gutterBottom variant="subtitle1" component="div" fontWeight={'bold'}>
                             Position Title
                         </Typography>
                         <Typography variant="body2" gutterBottom>
