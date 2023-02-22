@@ -15,20 +15,6 @@ import { Navigate } from 'react-router-dom';
 import { Home } from '@mui/icons-material';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
-/**
- * Given a string, return true if it is a valid email.
- * @param {potentialEmail} string
- * @returns true if string is a valid email
- */
-const validateEmail = (potentialEmail:string) => {
-  // regex from https://www.w3resource.com/javascript/form/email-validation.php
- return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(potentialEmail))
-}
-
-
-
-
-
 // const SignInComponent = () => {
 //   const firebase = useFirebase()
 //   const dispatch = useDispatch()
@@ -163,23 +149,12 @@ const validateEmail = (potentialEmail:string) => {
 //   )
 // }
 
-const RequiredAuth: React.FC = () => {
-  const firebase = useFirebase()
-  const auth = useSelector((state: PersistState) => state.firebase.auth)
-  console.log(isEmpty(auth))
-  if (isEmpty(auth)) {
-    return <Navigate to="/signin" replace={true}/>
-  } else {
-    return <Outlet />
-  }
-}
-
 function App() {
   return (
-    <>
+    <div>
       <LoginPage />
       <HomePage />
-    </>
+    </div>
   );
 }
 

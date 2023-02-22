@@ -24,11 +24,10 @@ const pages = ['Home', 'About', 'Placeholder'];
 const settings = ['Profile?', 'Dashboard?', 'Logout'];
 
 const NavBar: React.FC = () => {
-    
+
     const firebase = useFirebase()
     // const organizations = useAppSelector(state => state.firebase.data.organizations)
     // console.log(organizations)
-
     useFirebaseConnect({ path: "organization" })
     console.log(useAppSelector(state => state.firebase.data.organization))
 

@@ -8,6 +8,8 @@ import { Organization, Position, UserData } from './dbSchemas'
 import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { LoginState } from "./features/LoginPage/LoginSlice"
 import loginReducer from "./features/LoginPage/LoginSlice"
+import { firebaseUIConfigState } from "./features/LoginPage/firebaseUIConfigSlice"
+import firebaseUIConfigReducer from './features/LoginPage/firebaseUIConfigSlice'
 
 
 const rootPersistConfig = {
@@ -33,12 +35,14 @@ export type RootState = {
     firebase: FirebaseReducer.Reducer<UserProfile, DBSchema>
     organizations: OrganizationsState,
     login: LoginState
+    firebaseUIConfig: firebaseUIConfigState
 }
 
 const rootReducer = combineReducers({
     organizations: orgReducer,
     firebase: firebaseReducer,
-    login: loginReducer
+    login: loginReducer,
+    firebaseUIConfig:  firebaseUIConfigReducer
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer)

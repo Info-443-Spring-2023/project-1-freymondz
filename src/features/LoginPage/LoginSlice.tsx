@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { GoogleAuthProvider } from 'firebase/auth'
 import { RootState } from '../../store'
 
 
 export interface LoginState {
-    status: boolean
+    status: boolean,
 }
 
 const initialState: any = {
-    status: false
+    status: false,
   }
 
 const loginSlice = createSlice({

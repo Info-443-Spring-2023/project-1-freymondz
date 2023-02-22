@@ -12,6 +12,8 @@ import { persistor, store } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom'
 import { getAuth } from 'firebase/auth';
+import LoginPage from './features/LoginPage/LoginPage';
+import HomePage from './features/HomePage/HomePage2';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -50,7 +52,8 @@ ReactDOM.render(
         <ReactReduxFirebaseProvider {...rrfProps}>
           <BrowserRouter>
             <PersistGate loading={null} persistor={persistor}>
-              <App />
+              <LoginPage />
+              <HomePage />
             </PersistGate>
           </BrowserRouter>
         </ReactReduxFirebaseProvider>
