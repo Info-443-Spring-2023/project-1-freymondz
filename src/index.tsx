@@ -4,13 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase/compat/app'
-import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
+import { ReactReduxFirebaseProvider} from 'react-redux-firebase'
 
 // Import the functions you need from the SDKs you need
 import { Provider } from 'react-redux';
 import { persistor, store } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter } from 'react-router-dom'
+import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -24,7 +25,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
-  
+
 firebase.initializeApp(firebaseConfig)
 
 
@@ -36,8 +37,6 @@ const rrfConfig = {
   userProfile: 'users'
 }
 
-
-
 const rrfProps = {
   firebase,
   config: rrfConfig,
@@ -45,7 +44,7 @@ const rrfProps = {
 }
 
 
-ReactDOM.render(                    
+ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
         <ReactReduxFirebaseProvider {...rrfProps}>

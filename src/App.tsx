@@ -1,13 +1,19 @@
-import React, { HtmlHTMLAttributes, useState } from 'react';
+import React, { HtmlHTMLAttributes, useEffect, useState } from 'react';
 import './App.css';
 import HomePage2 from './features/HomePage/HomePage2';
 import HomePage from './features/HomePage/HomePage2';
 import Button from '@mui/material/Button'
 import { FormControl, Typography, Box, TextField, FormLabel, FormGroup, FormControlLabel, Checkbox, FormHelperText, Divider, CircularProgress, Link } from '@mui/material';
 import firebase from 'firebase/compat';
-import { useFirebase, useFirebaseConnect } from 'react-redux-firebase';
-import { useDispatch } from 'react-redux';
-
+import { authIsReady, isLoaded, useFirebase, useFirebaseConnect } from 'react-redux-firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import { Routes, Route, Outlet } from 'react-router-dom';
+import LoginPage from './features/LoginPage/LoginPage';
+import { PersistState } from './store';
+import {isEmpty } from 'react-redux-firebase';
+import { Navigate } from 'react-router-dom';
+import { Home } from '@mui/icons-material';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
 /**
  * Given a string, return true if it is a valid email.
@@ -26,11 +32,11 @@ const validateEmail = (potentialEmail:string) => {
 // const SignInComponent = () => {
 //   const firebase = useFirebase()
 //   const dispatch = useDispatch()
-  
+
 //   useFirebaseConnect({
 //     path: "user" // user
 //   })
-  
+
 //   const [name, setName] = useState('')
 //   const [email, setEmail] = useState('')
 //   const [password, setPassword] = useState('')
@@ -46,12 +52,12 @@ const validateEmail = (potentialEmail:string) => {
 //   const validPassword = password.length >= MIN_PASSWORD_LENGTH
 
 
-  
+
 //   const errors = {
 //     email: !validEmail,
 //     password: !validPassword
 //   }
-  
+
 //   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 //     // update name
 //     setName(event.target.value)
@@ -60,7 +66,7 @@ const validateEmail = (potentialEmail:string) => {
 //   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 //     setEmail(event.target.value)
 //   }
-  
+
 //   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 //     setPassword(event.target.value)
 //   }
@@ -134,7 +140,7 @@ const validateEmail = (potentialEmail:string) => {
 //           helperText={errors.password && 'input a password of at least 8 characters'}
 //           sx={{ m: 1 }}
 //         />
-          
+
 //         <Box
 //           sx={{
 //             my: 4,
@@ -157,29 +163,28 @@ const validateEmail = (potentialEmail:string) => {
 //   )
 // }
 
+const RequiredAuth: React.FC = () => {
+  const firebase = useFirebase()
+  const auth = useSelector((state: PersistState) => state.firebase.auth)
+  console.log(isEmpty(auth))
+  if (isEmpty(auth)) {
+    return <Navigate to="/signin" replace={true}/>
+  } else {
+    return <Outlet />
+  }
+}
+
 function App() {
+  const auth = useSelector((state: PersistState) => state.firebase.auth)
+  const handleSignOut = (event: any) => {
+    console.log("signing out");
+    signOut(getAuth());
+  }
   return (
     <>
-        {/* <SignInComponent /> */}
-        <HomePage />
-        {/* <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.tsx</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
-        </div> */}
+      {isEmpty(auth)? <LoginPage />:  <button className="btn btn-secondary ms-2" onClick={handleSignOut}>Sign Out</button>}
+      <HomePage />
     </>
-
   );
 }
 

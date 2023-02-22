@@ -6,25 +6,22 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import { firebaseReducer, FirebaseReducer } from 'react-redux-firebase'
 import { Organization, Position, UserData } from './dbSchemas'
 import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit'
+import { LoginState } from "./features/LoginPage/LoginSlice"
+import loginReducer from "./features/LoginPage/LoginSlice"
 
 
 const rootPersistConfig = {
     key: 'root',
     storage
 }
-const rootReducer = combineReducers({
-    organizations: orgReducer,
-    firebase: firebaseReducer
-});
 
-const persistedReducer = persistReducer(rootPersistConfig, rootReducer)
 
 interface UserProfile {
     email: string
 }
 
 interface DBSchema {
-    users: UserData,
+    user: UserData,
     organization: Organization,
     positions: Position
     [name: string]: any
@@ -35,8 +32,16 @@ interface DBSchema {
 export type RootState = {
     firebase: FirebaseReducer.Reducer<UserProfile, DBSchema>
     organizations: OrganizationsState,
-
+    login: LoginState
 }
+
+const rootReducer = combineReducers({
+    organizations: orgReducer,
+    firebase: firebaseReducer,
+    login: loginReducer
+});
+
+const persistedReducer = persistReducer(rootPersistConfig, rootReducer)
 
 const options = {
     trace: true
@@ -57,3 +62,4 @@ export type AppDispatch = typeof store.dispatch
 // for redux-persist
 export const persistor = persistStore(store)
 
+export type PersistState = ReturnType<typeof persistedReducer>

@@ -9,7 +9,6 @@ const HomePage: React.FC = () => {
             <h1>Hi</h1>
             <NavBar/>
             <OrgList/>
-                   
         </>
     )
 
