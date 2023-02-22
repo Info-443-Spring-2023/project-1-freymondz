@@ -14,7 +14,6 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
@@ -66,7 +65,7 @@ const OrgListItem: React.FC = () => {
             <CardMedia
                 component="img"
                 sx={{ width: 151 }}
-                image="/static/images/cards/live-from-space.jpg"
+                image="...../logo192.png"
                 alt="Org Cover"
             />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
@@ -100,6 +99,7 @@ const OrgListItem: React.FC = () => {
                         <Typography paragraph>
                             This is a list of Accessibility Requirements. Or Descrption of physical requirements
                         </Typography>
+                        <Typography paragraph>Link:Insert link out to site</Typography>
                     </CardContent>
                 </Collapse>
             </Box>

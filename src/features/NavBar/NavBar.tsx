@@ -19,6 +19,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import AboutPage from "../AboutPage/AboutPage";
+import { Navigate } from "react-router-dom";
 
 const pages = ['Home', 'About', 'Dashboard/Profile'];
 const settings = ['Logout'];
