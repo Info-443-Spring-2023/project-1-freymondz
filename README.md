@@ -4,15 +4,23 @@
 
 # Main Features
 - Filtering System
-    - Allows users to apply filters to a list of volunteer opportunties in their area. 
+    - Allows users to apply filters to a list of volunteer opportunties in their area.
 - Search feature
     - Allows users to find volunteer opportunties via keyword search
-- Log in 
+- Log in
     - Allows users to create a basic account with an email and password
 - Bookmark feature
     - Allows logged in users are also able to bookmark volunteer postions they are interested in and/or want to apply for in the future
 - Tracker
     - Allows logged in users to track completed volunteer hours
+
+# Set up
+
+Install yarn: `npm install --global yarn`
+
+Run `yarn install`
+
+Install new libary: `yarn add lib_name`
 
 # Getting Started with Create React App
 
@@ -22,7 +30,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -30,12 +38,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+### `yarn test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `yarn run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -45,7 +53,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `yarn run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
