@@ -16,6 +16,9 @@ import Collapse from '@mui/material/Collapse';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
+import BookmarkIcon from '@mui/icons-material/Bookmark';
+import BookmarkBorder from "@mui/icons-material/BookmarkBorder";
 
 const Img = styled('img')({
     margin: 'auto',
@@ -70,6 +73,11 @@ const OrgListItem: React.FC = () => {
                 <CardHeader
                     title="Position Title"
                     subheader="Organization Title"
+                    action={
+                        <IconButton aria-label="settings">
+                          <BookmarkBorder />
+                        </IconButton>
+                      }
                 />
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
@@ -77,9 +85,6 @@ const OrgListItem: React.FC = () => {
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                    </IconButton>
                     <ExpandMore
                         expand={expanded}
                         onClick={handleExpandClick}

@@ -20,8 +20,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Home', 'About', 'Placeholder'];
-const settings = ['Profile?', 'Dashboard?', 'Logout'];
+const pages = ['Home', 'About', 'Dashboard/Profile'];
+const settings = ['Logout'];
 
 const NavBar: React.FC = () => {
     

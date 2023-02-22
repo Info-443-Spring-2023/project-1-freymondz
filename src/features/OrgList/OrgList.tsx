@@ -11,7 +11,6 @@ import ButtonBase from '@mui/material/ButtonBase';
 const OrgList: React.FC = () => {
     return (
         <>
-            <h3>Organization List:</h3>
             <OrgListItem />
         </>
     )
