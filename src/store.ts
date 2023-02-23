@@ -4,15 +4,18 @@ import { persistReducer, persistStore } from "redux-persist"
 import orgReducer from './features/OrgList/OrgsSlice'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { firebaseReducer, FirebaseReducer } from 'react-redux-firebase'
-import { Organization, Position, UserData } from './dbSchemas'
+import { Interest, Organization, Position, UserData } from './dbSchemas'
 import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit'
-
-
+import { UserDataState } from "./features/UserDataDialog/UserDataSlice"
+import userDataReducer from "./features/UserDataDialog/UserDataSlice"
+import { InterestState } from "./features/Interest/InterestSlice"
+import interestReducer from "./features/Interest/InterestSlice"
 
 
 const rootPersistConfig = {
     key: 'root',
     storage,
+    blacklist: ['interests']
 }
 
 
@@ -23,7 +26,8 @@ interface UserProfile {
 interface DBSchema {
     user: UserData,
     organization: Organization,
-    positions: Position
+    positions: Position,
+    interest: Interest
     [name: string]: any
 }
 
@@ -32,13 +36,15 @@ interface DBSchema {
 export type RootState = {
     firebase: FirebaseReducer.Reducer<UserProfile, DBSchema>
     organizations: OrganizationsState,
-
+    userData: UserDataState,
+    interests: InterestState
 }
 
 const rootReducer = combineReducers({
     organizations: orgReducer,
     firebase: firebaseReducer,
-
+    userData: userDataReducer,
+    interests: interestReducer
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer)

@@ -2,7 +2,8 @@
 export interface UserData {
     createdAt: string,
     timezone: string,
-    isAdmin?: boolean
+    isAdmin?: boolean,
+    edit: boolean
 }
 
 export interface Organization {
@@ -12,4 +13,8 @@ export interface Organization {
 
 export interface Position {
     name: string,
+}
+
+export interface Interest {
+    name: string
 }

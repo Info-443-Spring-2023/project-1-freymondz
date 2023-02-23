@@ -20,40 +20,23 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useSelector } from "react-redux";
-import { PersistState } from "../../store";
-import {GoogleAuthProvider,getAuth, signOut} from 'firebase/auth';
+import { PersistState, store } from "../../store";
+import { GoogleAuthProvider, getAuth, signOut } from 'firebase/auth';
 import { StyledFirebaseAuth } from "react-firebaseui";
 import AboutPage from "../AboutPage/AboutPage";
 import { Navigate } from "react-router-dom";
+import { setUserDataEdit } from "../UserDataDialog/UserDataSlice";
 
 const pages = ['Home', 'About', 'Dashboard/Profile'];
 const settings = ['Logout']
-// Configure FirebaseUI.
-const uiConfig = {
-    // Popup signin flow rather than redirect flow.
-    signInFlow: 'popup',
-    // We will display Google and Facebook as auth providers.
-    signInOptions: [
-      GoogleAuthProvider.PROVIDER_ID,
-    ],
-    callbacks: {
-      // Avoid redirects after sign-in.
-      signInSuccessWithAuthResult: (authResult: any, redirectUrl: any) => {
-        const firebase = useFirebase()
-        firebase.handleRedirectResult(authResult).then(() => {
-            // history.push(redirectUrl); if you use react router to redirect
-        });
-        return false;
-      },
-    },
-  };
+
 const NavBar: React.FC = () => {
 
     const firebase = useFirebase()
     // const organizations = useAppSelector(state => state.firebase.data.organizations)
     // console.log(organizations)
-    useFirebaseConnect({ path: "organization" })
-    console.log(useAppSelector(state => state.firebase.data.organization))
+    // useFirebaseConnect({ path: "organization" })
+    // console.log(useAppSelector(state => state.firebase.data.organization))
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -175,10 +158,27 @@ const NavSetting: React.FC = (props) => {
     // #region LoginButton
     const firebase = useFirebase();
     if (isEmpty(auth)) {
-        return   (
-        <Box>
-            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()}/>
-        </Box>)
+        return (
+            <Box>
+                <StyledFirebaseAuth uiConfig={{
+                    // Popup signin flow rather than redirect flow.
+                    signInFlow: 'popup',
+                    // We will display Google and Facebook as auth providers.
+                    signInOptions: [
+                        GoogleAuthProvider.PROVIDER_ID,
+                    ],
+                    callbacks: {
+                        // Avoid redirects after sign-in.
+                        signInSuccessWithAuthResult: (authResult: any, redirectUrl: any) => {
+                            console.log(authResult.additionalUserInfo.isNewUser)
+                            if(authResult.additionalUserInfo.isNewUser){
+                                store.dispatch(setUserDataEdit(true))
+                            }
+                            return false;
+                        },
+                    },
+                }} firebaseAuth={firebase.auth()} />
+            </Box>)
     }
     // #endregion
 
@@ -192,36 +192,38 @@ const NavSetting: React.FC = (props) => {
     const handleSignOut = () => {
         console.log("signing out");
         signOut(getAuth());
-      }
+    }
     return (
         <Box sx={{ flexGrow: 0 }}>
-        <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-            </IconButton>
-        </Tooltip>
-        <Menu
-            sx={{ mt: '45px' }}
-            id="menu-appbar"
-            anchorEl={anchorElUser}
-            anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            open={Boolean(anchorElUser)}
-            onClose={handleCloseUserMenu}
-        >
-            <MenuItem key={"Logout"} onClick={()=>{handleCloseUserMenu();handleSignOut()}}>
-                <Typography textAlign="center">Logout</Typography>
-            </MenuItem>
-        </Menu>
-    </Box>
+            <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+            </Tooltip>
+            <Menu
+                sx={{ mt: '45px' }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+            >
+                <MenuItem key={"Logout"} onClick={() => { handleCloseUserMenu(); handleSignOut() }}>
+                    <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
+            </Menu>
+        </Box>
     )
     // #endregion
 }
 export default NavBar
+
+
