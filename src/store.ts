@@ -4,7 +4,7 @@ import { persistReducer, persistStore } from "redux-persist"
 import orgReducer from './features/OrgList/OrgsSlice'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { firebaseReducer, FirebaseReducer } from 'react-redux-firebase'
-import { Interest, Organization, Position, UserData } from './dbSchemas'
+import { Accessibility, Interest, Organization, Position, UserData } from './dbSchemas'
 import { configureStore, combineReducers, getDefaultMiddleware } from '@reduxjs/toolkit'
 import { UserDataState } from "./features/UserDataDialog/UserDataSlice"
 import userDataReducer from "./features/UserDataDialog/UserDataSlice"
@@ -27,7 +27,8 @@ interface DBSchema {
     user: UserData,
     organization: Organization,
     positions: Position,
-    interest: Interest
+    interest: Interest,
+    accessibility: Accessibility
     [name: string]: any
 }
 

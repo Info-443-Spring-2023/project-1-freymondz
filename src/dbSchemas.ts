@@ -18,3 +18,7 @@ export interface Position {
 export interface Interest {
     name: string
 }
+
+export interface Accessibility {
+    name: string
+}
