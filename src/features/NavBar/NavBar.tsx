@@ -21,7 +21,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { useSelector } from "react-redux";
 import { PersistState } from "../../store";
-import {GoogleAuthProvider,getAuth, signOut } from 'firebase/auth';
+import {GoogleAuthProvider,getAuth, signOut} from 'firebase/auth';
 import { StyledFirebaseAuth } from "react-firebaseui";
 import AboutPage from "../AboutPage/AboutPage";
 import { Navigate } from "react-router-dom";
@@ -38,7 +38,13 @@ const uiConfig = {
     ],
     callbacks: {
       // Avoid redirects after sign-in.
-      signInSuccessWithAuthResult: () => false,
+      signInSuccessWithAuthResult: (authResult: any, redirectUrl: any) => {
+        const firebase = useFirebase()
+        firebase.handleRedirectResult(authResult).then(() => {
+            // history.push(redirectUrl); if you use react router to redirect
+        });
+        return false;
+      },
     },
   };
 const NavBar: React.FC = () => {
