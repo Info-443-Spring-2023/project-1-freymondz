@@ -24,6 +24,7 @@ import { PersistState, store } from "../../store";
 import { GoogleAuthProvider, getAuth, signOut } from 'firebase/auth';
 import { StyledFirebaseAuth } from "react-firebaseui";
 import { Link } from "@mui/material";
+import { setUserDataEdit } from "../UserDataDialog/UserDataSlice";
 
 const pages = ['Home', 'About', 'Dashboard/Profile'];
 const settings = ['Logout']
