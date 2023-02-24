@@ -61,7 +61,7 @@ const UserDataDialog: React.FC = () => {
   }
   if (isLoaded(interests) && isLoaded(accessiblities)) {
     const backDropCheck = (event: any, reason: string) => {
-      if (reason && reason == "backdropClick")
+      if (reason && reason == "backdropClick" || reason && reason == "escapeKeyDown")
           return;
       handleClose();
     }
@@ -109,7 +109,7 @@ const UserDataDialog: React.FC = () => {
     )
   }
   return (
-    <Dialog open={!open}>
+    <Dialog open={open}>
       <DialogTitle>User Edit Data</DialogTitle>
       <DialogContent>
         <DialogContentText sx={{ marginBottom: ".5em" }}>
