@@ -134,7 +134,7 @@ const NavBar: React.FC = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Link href={page} underline="none">
+                            <Link  key={page} href={page} underline="none">
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}

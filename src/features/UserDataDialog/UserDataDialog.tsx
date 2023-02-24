@@ -70,6 +70,9 @@ const UserDataDialog: React.FC = () => {
         .catch(err => console.log(err));
       store.dispatch(setUserDataEdit(false))
     }
+    const closeWithoutSubmit = () => {
+      store.dispatch(setUserDataEdit(false))
+    }
     const chipInterestArrary = []
     for (const key in interests) {
       chipInterestArrary.push(<Chip key={interests[key].name} label={interests[key].name} size="small" color="primary" variant={!currInterest.includes(interests[key].name) ? "outlined" : "filled"} onClick={handleInterestClick} />)
@@ -80,7 +83,7 @@ const UserDataDialog: React.FC = () => {
     }
     return (
       <Dialog open={open} onClose={backDropCheck}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>User Profile Edit</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ marginBottom: ".5em" }}>
             What are you interested in? Select all that applies.
@@ -103,14 +106,15 @@ const UserDataDialog: React.FC = () => {
           </Button>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Submit</Button>
+          <Button onClick={handleClose} variant="contained" >Submit</Button>
+          <Button onClick={closeWithoutSubmit} variant="outlined">Cancel</Button>
         </DialogActions>
       </Dialog>
     )
   }
   return (
     <Dialog open={open}>
-      <DialogTitle>User Edit Data</DialogTitle>
+      <DialogTitle>User Profile Edit</DialogTitle>
       <DialogContent>
         <DialogContentText sx={{ marginBottom: ".5em" }}>
           Loading...
