@@ -23,9 +23,7 @@ import { useSelector } from "react-redux";
 import { PersistState, store } from "../../store";
 import { GoogleAuthProvider, getAuth, signOut } from 'firebase/auth';
 import { StyledFirebaseAuth } from "react-firebaseui";
-import AboutPage from "../AboutPage/AboutPage";
-import { Navigate } from "react-router-dom";
-import { setUserDataEdit } from "../UserDataDialog/UserDataSlice";
+import { Link } from "@mui/material";
 
 const pages = ['Home', 'About', 'Dashboard/Profile'];
 const settings = ['Logout']
@@ -135,6 +133,7 @@ const NavBar: React.FC = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
+                            <Link href={page} underline="none">
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
@@ -142,6 +141,7 @@ const NavBar: React.FC = () => {
                             >
                                 {page}
                             </Button>
+                            </Link>
                         ))}
                     </Box>
 
