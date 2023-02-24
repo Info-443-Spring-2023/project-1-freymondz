@@ -171,7 +171,7 @@ const NavSetting: React.FC = (props) => {
                         // Avoid redirects after sign-in.
                         signInSuccessWithAuthResult: (authResult: any, redirectUrl: any) => {
                             console.log(authResult.additionalUserInfo.isNewUser)
-                            if(authResult.additionalUserInfo.isNewUser){
+                            if (authResult.additionalUserInfo.isNewUser) {
                                 store.dispatch(setUserDataEdit(true))
                             }
                             return false;
@@ -216,6 +216,9 @@ const NavSetting: React.FC = (props) => {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
             >
+                <MenuItem key={"Edit Profile"} onClick={() => { handleCloseUserMenu(); store.dispatch(setUserDataEdit(true)) }}>
+                    <Typography textAlign="center">Edit Profile</Typography>
+                </MenuItem>
                 <MenuItem key={"Logout"} onClick={() => { handleCloseUserMenu(); handleSignOut() }}>
                     <Typography textAlign="center">Logout</Typography>
                 </MenuItem>

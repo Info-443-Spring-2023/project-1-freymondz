@@ -37,15 +37,15 @@ interface DBSchema {
 export type RootState = {
     firebase: FirebaseReducer.Reducer<UserProfile, DBSchema>
     organizations: OrganizationsState,
-    userData: UserDataState,
-    interests: InterestState
+    interests: InterestState,
+    userData: UserDataState
 }
 
 const rootReducer = combineReducers({
     organizations: orgReducer,
     firebase: firebaseReducer,
-    userData: userDataReducer,
-    interests: interestReducer
+    interests: interestReducer,
+    userData: userDataReducer
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer)
