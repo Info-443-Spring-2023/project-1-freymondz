@@ -19,12 +19,14 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { useSelector } from "react-redux";
-import { PersistState, store } from "../../store";
+import { connect, useSelector } from "react-redux";
+import { PersistState, PropsFromRedux, store } from "../../store";
 import { GoogleAuthProvider, getAuth, signOut } from 'firebase/auth';
 import { StyledFirebaseAuth } from "react-firebaseui";
-import { Link } from "@mui/material";
+import { Link, Paper } from "@mui/material";
 import { setUserDataEdit } from "../UserDataDialog/UserDataSlice";
+import { getDownloadURL, getStorage, ref } from "firebase/storage";
+import { useState } from "react";
 
 const pages = ['Home', 'About', 'Dashboard/Profile'];
 const settings = ['Logout']
@@ -158,6 +160,10 @@ const NavSetting: React.FC = (props) => {
     const auth = useSelector((state: PersistState) => state.firebase.auth)
     // #region LoginButton
     const firebase = useFirebase();
+    const storage = getStorage();
+    const initPic = useSelector((state: PersistState) => state.userData)
+    const [url, setURL] = useState<string>('');
+
     if (isEmpty(auth)) {
         return (
             <Box>
@@ -184,6 +190,15 @@ const NavSetting: React.FC = (props) => {
     // #endregion
 
     // #region NavMenuItem
+    if (initPic.profilePic !== '') {
+        getDownloadURL(ref(storage, `${initPic.profilePic}`))
+        .then((url) => {
+          setURL(url)
+        })
+        .catch((error) => {
+          setURL('')
+        })
+    }
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -198,7 +213,7 @@ const NavSetting: React.FC = (props) => {
         <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt={auth.displayName? `${auth.displayName} User Avatar`: 'User Avatar'}  component={Paper} src={url} elevation={3} sx={{ width: 50, height: 50}}/>
                 </IconButton>
             </Tooltip>
             <Menu
@@ -228,6 +243,7 @@ const NavSetting: React.FC = (props) => {
     )
     // #endregion
 }
+
 export default NavBar
 
 

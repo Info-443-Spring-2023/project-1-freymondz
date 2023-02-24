@@ -10,6 +10,7 @@ import { UserDataState } from "./features/UserDataDialog/UserDataSlice"
 import userDataReducer from "./features/UserDataDialog/UserDataSlice"
 import { InterestState } from "./features/Interest/InterestSlice"
 import interestReducer from "./features/Interest/InterestSlice"
+import { connect, ConnectedProps } from "react-redux"
 
 
 const rootPersistConfig = {
@@ -61,8 +62,16 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
     devTools: true,
     enhancers: composeEnhancers
-  })
+})
 
+const mapState = (state: PersistState) => {
+    return {
+        initPic: state.userData.profilePic
+    }
+}
+export type PropsFromRedux = ConnectedProps<typeof connector>
+
+const connector = connect(mapState)
 // typed redux state dispatch
 export type AppDispatch = typeof store.dispatch
 
