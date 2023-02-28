@@ -7,8 +7,7 @@ import FilterList from './FilterList';
 const FilterBar: React.FC = () => {
     return (
         <Card>
-            <CardHeader title="Filters">
-            </CardHeader>
+            <CardHeader title="Filters"></CardHeader>
             <FilterList></FilterList>
 
         </Card>

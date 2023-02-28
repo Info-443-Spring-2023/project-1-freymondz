@@ -18,6 +18,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorder from "@mui/icons-material/BookmarkBorder";
+import { Link } from "@mui/material";
 
 const Img = styled('img')({
     margin: 'auto',
@@ -58,8 +59,8 @@ interface OrgListItemProps {
 
 }
 
-const PositionListItem = ({ accessibility, commitment, 
-    description, interest, link, location, min_age, name, 
+const PositionListItem = ({ accessibility, commitment,
+    description, interest, link, location, min_age, name,
     organization }: OrgListItemProps) => {
 
     const firebase = useFirebase()
@@ -79,49 +80,48 @@ const PositionListItem = ({ accessibility, commitment,
 
     return (
         <Box paddingBottom={5}>
-        <Card sx={{ display: 'flex' }}>
-            <CardMedia
-                component="img"
-                sx={{ width: 151 }}
-                image="...../logo192.png"
-                alt="Org Cover"
-            />
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <CardHeader
-                    title={name}
-                    subheader={organization}
-                    action={
-                        <IconButton aria-label="settings">
-                          <BookmarkBorder />
-                        </IconButton>
-                      }
+            <Card sx={{ display: 'flex' }}>
+                <CardMedia
+                    component="img"
+                    sx={{ width: 175, height:200 }}
+                    image="newLogo.png"
+                    alt="Org Cover"
                 />
-                <CardContent>
-                    <Typography variant="body2" color="text.secondary">
-                        {description}
-                    </Typography>
-                </CardContent>
-                <CardActions disableSpacing>
-                    <ExpandMore
-                        expand={expanded}
-                        onClick={handleExpandClick}
-                        aria-expanded={expanded}
-                        aria-label="show more"
-                    >
-                        <ExpandMoreIcon />
-                    </ExpandMore>
-                </CardActions>
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <CardHeader
+                        title={name}
+                        subheader={organization}
+                        action={
+                            <IconButton aria-label="bookmark">
+                                <BookmarkBorder />
+                            </IconButton>
+                        }
+                    />
                     <CardContent>
-                        <Typography paragraph>Accessibility:</Typography>
-                        <Typography paragraph>
-                            {accessibility}
+                        <Typography variant="body2" color="text.secondary">
+                            {description}
                         </Typography>
-                        <Typography paragraph>External Link: {link}</Typography>
                     </CardContent>
-                </Collapse>
-            </Box>
-        </Card>
+                    <CardActions disableSpacing>
+                        <ExpandMore
+                            expand={expanded}
+                            onClick={handleExpandClick}
+                            aria-expanded={expanded}
+                            aria-label="show more"
+                        >
+                            <ExpandMoreIcon />
+                        </ExpandMore>
+                    </CardActions>
+                    <Collapse in={expanded} timeout="auto" unmountOnExit>
+                        <CardContent>
+                            <Typography paragraph>Accessibility: {accessibility}</Typography>
+                            <Typography paragraph>Key Interests: {interest}</Typography>
+                            <Typography paragraph>Comittment Level: {commitment}</Typography>
+                            <Typography paragraph>External Link: {link}</Typography>
+                        </CardContent>
+                    </Collapse>
+                </Box>
+            </Card>
         </Box>
     );
 }
