@@ -78,6 +78,7 @@ const PositionListItem = ({ accessibility, commitment,
     };
 
     return (
+        <Box paddingBottom={5}>
         <Card sx={{ display: 'flex' }}>
             <CardMedia
                 component="img"
@@ -87,8 +88,8 @@ const PositionListItem = ({ accessibility, commitment,
             />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardHeader
-                    title="Position Title"
-                    subheader="Organization Title"
+                    title={name}
+                    subheader={organization}
                     action={
                         <IconButton aria-label="settings">
                           <BookmarkBorder />
@@ -97,7 +98,7 @@ const PositionListItem = ({ accessibility, commitment,
                 />
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        {description}
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
@@ -114,13 +115,14 @@ const PositionListItem = ({ accessibility, commitment,
                     <CardContent>
                         <Typography paragraph>Accessibility:</Typography>
                         <Typography paragraph>
-                            This is a list of Accessibility Requirements. Or Descrption of physical requirements
+                            {accessibility}
                         </Typography>
-                        <Typography paragraph>Link:Insert link out to site</Typography>
+                        <Typography paragraph>External Link: {link}</Typography>
                     </CardContent>
                 </Collapse>
             </Box>
         </Card>
+        </Box>
     );
 }
 
