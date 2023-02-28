@@ -41,8 +41,22 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }));
 
+interface OrgListItemProps {
+    accessibility: string,
+    commitment: string,
+    description: string,
+    interest: string,
+    link: string,
+    location: string,
+    min_age: number,
+    name: string,
+    //the organization name in Firebase
+    organization: string,
+
+}
+
 //TODO: rename this to positionListItem
-const OrgListItem: React.FC = () => {
+const OrgListItem = ({ accessibility, commitment, description, interest, link, location, min_age, name, organization }: OrgListItemProps) => {
 
     const firebase = useFirebase()
     // const organizationsFromFirebase = useSelector((state: RootState) => state.firebase.data.organization)
@@ -70,7 +84,9 @@ const OrgListItem: React.FC = () => {
             />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardHeader
+                // position.name
                     title="Position Title"
+                    // position.organization
                     subheader="Organization Title"
                     action={
                         <IconButton aria-label="settings">
@@ -80,6 +96,7 @@ const OrgListItem: React.FC = () => {
                 />
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
+                        {/* position.description */}
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </Typography>
                 </CardContent>
@@ -96,6 +113,7 @@ const OrgListItem: React.FC = () => {
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>Accessibility:</Typography>
+                        {/* position.accessibility */}
                         <Typography paragraph>
                             This is a list of Accessibility Requirements. Or Descrption of physical requirements
                         </Typography>

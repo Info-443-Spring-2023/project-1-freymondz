@@ -9,12 +9,19 @@ import { useAppSelector } from '../../hooks';
 import { Box } from '@mui/material';
 import { selectFilters, setFilters } from './FiltersSlice';
 import { store } from '../../store';
+import { useFirebaseConnect } from 'react-redux-firebase';
 
 
 // Change line 28 to map over filters
 const FilterList: React.FC = () => {
+    // connecting it to firebase
+    useFirebaseConnect({ path: "interest" })
+
+    useFirebaseConnect({ path: "positions" })
+
     const [checked, setChecked] = React.useState<string[]>([]);
 
+    // querying data from Firebase
     const interests = useAppSelector(state => state.firebase.data.interest)
 
     const activeFilters = useAppSelector(state => state.filters)

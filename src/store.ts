@@ -17,7 +17,7 @@ import { filtersState } from "./features/FilterBar/FiltersSlice"
 const rootPersistConfig = {
     key: 'root',
     storage,
-    blacklist: ['interests']
+    blacklist: ['interests', 'position']
 }
 
 
