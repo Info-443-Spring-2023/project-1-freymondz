@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { useFirebase } from "react-redux-firebase"
 import { RootState } from "../../store"
-import { selectOrgId, setOrgId } from "./OrgsSlice"
+import { selectPositionId, setPositionId } from "./PositionSlice"
 
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
@@ -41,6 +41,9 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }));
 
+
+// Note: these are passed in as props from the PositionList.tsx component, so you don't have to
+//       query this from Firebase.
 interface OrgListItemProps {
     accessibility: string,
     commitment: string,
@@ -55,12 +58,12 @@ interface OrgListItemProps {
 
 }
 
-//TODO: rename this to positionListItem
-const OrgListItem = ({ accessibility, commitment, description, interest, link, location, min_age, name, organization }: OrgListItemProps) => {
+const PositionListItem = ({ accessibility, commitment, 
+    description, interest, link, location, min_age, name, 
+    organization }: OrgListItemProps) => {
 
     const firebase = useFirebase()
-    // const organizationsFromFirebase = useSelector((state: RootState) => state.firebase.data.organization)
-    // when you click this, you set the organization id to equal the queried firebase db's organization id.
+
     const onClick = () => {
         // Object.keys(organizationsFromFirebase).forEach(() => {
         //     //go into "organizations" from Firebase
@@ -84,9 +87,7 @@ const OrgListItem = ({ accessibility, commitment, description, interest, link, l
             />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <CardHeader
-                // position.name
                     title="Position Title"
-                    // position.organization
                     subheader="Organization Title"
                     action={
                         <IconButton aria-label="settings">
@@ -96,7 +97,6 @@ const OrgListItem = ({ accessibility, commitment, description, interest, link, l
                 />
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">
-                        {/* position.description */}
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     </Typography>
                 </CardContent>
@@ -113,7 +113,6 @@ const OrgListItem = ({ accessibility, commitment, description, interest, link, l
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent>
                         <Typography paragraph>Accessibility:</Typography>
-                        {/* position.accessibility */}
                         <Typography paragraph>
                             This is a list of Accessibility Requirements. Or Descrption of physical requirements
                         </Typography>
@@ -125,4 +124,4 @@ const OrgListItem = ({ accessibility, commitment, description, interest, link, l
     );
 }
 
-export default OrgListItem
+export default PositionListItem

@@ -1,7 +1,7 @@
-import { OrganizationsState } from "./features/OrgList/OrgsSlice"
+import { PositionsState } from "./features/Positions/PositionSlice"
 import storage from "redux-persist/lib/storage"
 import { persistReducer, persistStore } from "redux-persist"
-import orgReducer from './features/OrgList/OrgsSlice'
+import orgReducer from './features/Positions/PositionSlice'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { firebaseReducer, FirebaseReducer } from 'react-redux-firebase'
 import { Accessibility, Interest, Organization, Position, UserData } from './dbSchemas'
@@ -38,7 +38,7 @@ interface DBSchema {
 // there will be more
 export type RootState = {
     firebase: FirebaseReducer.Reducer<UserProfile, DBSchema>
-    organizations: OrganizationsState,
+    positions: PositionsState,
     interests: InterestState,
     userData: UserDataState,
     filters: filtersState

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import NavBar from "../NavBar/NavBar"
-import OrgList from "../OrgList/OrgList"
+import OrgList from "../Positions/PositionList"
 import FilterBar from "../FilterBar/FilterBar";
 import Grid from '@mui/material/Grid';
 import UserDataDialog from '../UserDataDialog/UserDataDialog';
