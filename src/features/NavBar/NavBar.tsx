@@ -60,7 +60,18 @@ const NavBar: React.FC = () => {
         <AppBar position="static" style={{ background: '#374785' }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <Box
+                        component="img"
+                        sx={{
+                            height: '3rem',
+                            width: '3rem',
+                            display: { xs: 'none', md: 'flex' },
+                            mr: 1
+
+                        }}
+                        alt="Site Logo"
+                        src="newLogo.png"
+                    />
                     <Typography
                         variant="h6"
                         noWrap
@@ -76,7 +87,7 @@ const NavBar: React.FC = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        Name
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -115,7 +126,17 @@ const NavBar: React.FC = () => {
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <Box
+                        component="img"
+                        sx={{
+                            height: '3rem',
+                            width: '3rem',
+                            display: { xs: 'flex', md: 'none' }, mr: 1
+
+                        }}
+                        alt="Site Logo"
+                        src="newLogo.png"
+                    />
                     <Typography
                         variant="h5"
                         noWrap
@@ -132,18 +153,18 @@ const NavBar: React.FC = () => {
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        Name
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Link  key={page} href={page} underline="none">
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
+                            <Link key={page} href={page} underline="none">
+                                <Button
+                                    key={page}
+                                    onClick={handleCloseNavMenu}
+                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                >
+                                    {page}
+                                </Button>
                             </Link>
                         ))}
                     </Box>
@@ -192,12 +213,12 @@ const NavSetting: React.FC = (props) => {
     // #region NavMenuItem
     if (initPic.profilePic !== '') {
         getDownloadURL(ref(storage, `${initPic.profilePic}`))
-        .then((url) => {
-          setURL(url)
-        })
-        .catch((error) => {
-          setURL('')
-        })
+            .then((url) => {
+                setURL(url)
+            })
+            .catch((error) => {
+                setURL('')
+            })
     }
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
@@ -213,7 +234,7 @@ const NavSetting: React.FC = (props) => {
         <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt={auth.displayName? `${auth.displayName} User Avatar`: 'User Avatar'}  component={Paper} src={url} elevation={3} sx={{ width: 50, height: 50}}/>
+                    <Avatar alt={auth.displayName ? `${auth.displayName} User Avatar` : 'User Avatar'} component={Paper} src={url} elevation={3} sx={{ width: 50, height: 50 }} />
                 </IconButton>
             </Tooltip>
             <Menu
