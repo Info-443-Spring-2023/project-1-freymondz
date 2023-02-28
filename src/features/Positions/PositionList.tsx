@@ -1,4 +1,4 @@
-import OrgListItem from "./PositionListItem"
+import PositionListItem from "./PositionListItem"
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import { useAppSelector } from "../../hooks";
@@ -43,7 +43,7 @@ const OrgList: React.FC = () => {
                 const currentPosition = position[1] as any
                 console.log(currentPosition)
                 return (
-                    <OrgListItem 
+                    <PositionListItem 
                         accessibility={currentPosition.accessibility} 
                         commitment={currentPosition.commitment} 
                         description={currentPosition.description} 
