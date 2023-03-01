@@ -22,6 +22,10 @@ import { Link } from "@mui/material";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import InterestsIcon from '@mui/icons-material/Interests';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -128,16 +132,24 @@ const PositionListItem = ({ accessibility, commitment,
                         <CardContent>
                         <Grid container spacing={2}>
                             <Grid item xs={6}>
-                                <Item>{accessibility}</Item>
+                                <Item>
+                                    <AccessibilityNewIcon></AccessibilityNewIcon>
+                                    {accessibility}</Item>
                             </Grid>
                             <Grid item xs={6}>
-                                <Item>{interest}</Item>
+                                <Item>
+                                    <InterestsIcon></InterestsIcon>
+                                    {interest}</Item>
                             </Grid>
                             <Grid item xs={6}>
-                                <Item>{commitment}</Item>
+                                <Item>
+                                    <ScheduleIcon></ScheduleIcon>
+                                    {commitment}</Item>
                             </Grid>
                             <Grid item xs={6}>
-                                <Item>{location}</Item>
+                                <Item>
+                                    <LocationOnIcon></LocationOnIcon>
+                                    {location}</Item>
                             </Grid>
                         </Grid>
                         </CardContent>
