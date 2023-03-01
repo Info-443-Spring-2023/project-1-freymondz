@@ -19,6 +19,22 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorder from "@mui/icons-material/BookmarkBorder";
 import { Link } from "@mui/material";
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import InterestsIcon from '@mui/icons-material/Interests';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import CakeIcon from '@mui/icons-material/Cake';
+
+const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
 
 const Img = styled('img')({
     margin: 'auto',
@@ -102,6 +118,7 @@ const PositionListItem = ({ accessibility, commitment,
                             {description}
                         </Typography>
                     </CardContent>
+                    <Button href={link} target="_blank" rel="noreferrer">Sign Up</Button>
                     <CardActions disableSpacing>
                         <ExpandMore
                             expand={expanded}
@@ -114,10 +131,38 @@ const PositionListItem = ({ accessibility, commitment,
                     </CardActions>
                     <Collapse in={expanded} timeout="auto" unmountOnExit>
                         <CardContent>
-                            <Typography paragraph>Accessibility: {accessibility}</Typography>
-                            <Typography paragraph>Key Interests: {interest}</Typography>
-                            <Typography paragraph>Comittment Level: {commitment}</Typography>
-                            <Typography paragraph>External Link: {link}</Typography>
+                        <Grid container spacing={2}>
+                            <Grid item xs={6}>
+                                <Item>
+                                    <AccessibilityNewIcon sx = {{verticalAlign: 'middle'}}></AccessibilityNewIcon>
+                                    {accessibility}
+                                </Item>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Item>
+                                    <InterestsIcon sx = {{verticalAlign: 'middle'}}></InterestsIcon>
+                                    {interest}
+                                </Item>
+                            </Grid>
+                            <Grid item xs={3}>
+                                <Item>
+                                    <ScheduleIcon sx = {{verticalAlign: 'middle'}}></ScheduleIcon>
+                                    {commitment}
+                                </Item>
+                            </Grid>
+                            <Grid item xs={3}>
+                                <Item>
+                                    <CakeIcon sx = {{verticalAlign: 'middle'}}></CakeIcon>
+                                    {min_age}
+                                </Item>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Item>
+                                    <LocationOnIcon sx = {{verticalAlign: 'middle'}}></LocationOnIcon>
+                                    {location}
+                                </Item>
+                            </Grid>
+                        </Grid>
                         </CardContent>
                     </Collapse>
                 </Box>
