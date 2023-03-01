@@ -29,8 +29,7 @@ const OrgList: React.FC = () => {
     useFirebaseConnect({ path: "interest" })
 
     useFirebaseConnect({ path: "positions" })
-
-
+    
     const positions = useAppSelector(state => state.firebase.data.positions)
     const filters = useAppSelector(state => state.filters.activeFilters)
 
@@ -38,6 +37,7 @@ const OrgList: React.FC = () => {
     useFirebaseConnect({ path: `users/${auth.uid}` })
     const userData = useAppSelector(state => state.userData)
 
+    const uid = useAppSelector(({ firebase }) => firebase.auth.uid)
 
     const [oldFilter, setOldFilter] = useState<String[]>([])
     const [displayPositions, setDisplayPositions] = useState<[string, Position][]>([])

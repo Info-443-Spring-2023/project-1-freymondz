@@ -14,6 +14,7 @@ import { Navigate } from 'react-router-dom';
 import { Home } from '@mui/icons-material';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import AboutPage from './features/AboutPage/AboutPage';
+import DashBoard from './features/DashBoard/DashBoard';
 
 
 /**
@@ -171,6 +172,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/Home" element={<HomePage />} />
       <Route path="/About" element={<AboutPage />} />
+      <Route path="/Dashboard/Profile" element={<DashBoard />}  />
     </Routes>
   );
 }
