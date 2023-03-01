@@ -13,6 +13,7 @@ interface OrgListItemProps {
     accessibility: string,
     commitment: string,
     description: string,
+    img: string,
     interest: string,
     link: string,
     location: string,
@@ -82,6 +83,7 @@ const OrgList: React.FC = () => {
                             accessibility={currentPosition.accessibility}
                             commitment={currentPosition.commitment}
                             description={currentPosition.description}
+                            img={currentPosition.img}
                             interest={currentPosition.interest}
                             link={currentPosition.link}
                             location={currentPosition.location}
