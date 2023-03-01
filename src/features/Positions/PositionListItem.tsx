@@ -26,6 +26,7 @@ import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 import InterestsIcon from '@mui/icons-material/Interests';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import CakeIcon from '@mui/icons-material/Cake';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -143,10 +144,16 @@ const PositionListItem = ({ accessibility, commitment,
                                     {interest}
                                 </Item>
                             </Grid>
-                            <Grid item xs={6}>
+                            <Grid item xs={3}>
                                 <Item>
                                     <ScheduleIcon sx = {{verticalAlign: 'middle'}}></ScheduleIcon>
                                     {commitment}
+                                </Item>
+                            </Grid>
+                            <Grid item xs={3}>
+                                <Item>
+                                    <CakeIcon sx = {{verticalAlign: 'middle'}}></CakeIcon>
+                                    {min_age}
                                 </Item>
                             </Grid>
                             <Grid item xs={6}>
