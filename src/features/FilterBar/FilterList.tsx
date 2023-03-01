@@ -24,7 +24,7 @@ const FilterList: React.FC = () => {
     // querying data from Firebase
     const interests = useAppSelector(state => state.firebase.data.interest)
 
-    const activeFilters = useAppSelector(state => state.filters)
+    const activeFilters = useAppSelector(state => state.filters.activeFilters)
 
     const accessibilities = useAppSelector(state => state.firebase.data.accessibility)
 
@@ -53,7 +53,7 @@ const FilterList: React.FC = () => {
             <Box>
                 Interests
                 <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                    {interests ? 
+                    {interests ?
                         Object.entries(interests).map((value) => {
                             const labelId = `checkbox-list-label-${value[0]}`
 
@@ -74,7 +74,7 @@ const FilterList: React.FC = () => {
                                                 inputProps={{ 'aria-labelledby': labelId }}
                                             />
                                         </ListItemIcon>
-                                        <ListItemText id={labelId} primary={`Filter ${valueIndex + 1}: ${value[1].name}`} /> 
+                                        <ListItemText id={labelId} primary={`Filter ${valueIndex + 1}: ${value[1].name}`} />
                                     </ListItemButton>
                                 </ListItem>
                             );
@@ -85,7 +85,7 @@ const FilterList: React.FC = () => {
             <Box>
                 Accessibilities
                 <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                    {accessibilities ? 
+                    {accessibilities ?
                         Object.entries(accessibilities).map((value) => {
                             const labelId = `checkbox-list-label-${value[0]}`
 
@@ -100,13 +100,13 @@ const FilterList: React.FC = () => {
                                         <ListItemIcon>
                                             <Checkbox
                                                 edge="start"
-                                                // checked={checked.indexOf(valueIndex) !== -1}
+                                                checked={checked.includes(valueName)}
                                                 tabIndex={-1}
                                                 disableRipple
                                                 inputProps={{ 'aria-labelledby': labelId }}
                                             />
                                         </ListItemIcon>
-                                        <ListItemText id={labelId} primary={`Filter ${valueIndex + 1}: ${value[1].name}`} /> 
+                                        <ListItemText id={labelId} primary={`Filter ${valueIndex + 1}: ${value[1].name}`} />
                                     </ListItemButton>
                                 </ListItem>
                             );

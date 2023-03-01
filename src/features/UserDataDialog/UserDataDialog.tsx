@@ -4,7 +4,7 @@ import { useAppSelector } from '../../hooks';
 import { PersistState, store } from '../../store';
 import NavBar from "../NavBar/NavBar"
 import { useDispatch, useSelector } from 'react-redux';
-import { pushUserDataAccessibility, pushUserDataInterest, setUserDataEdit, setUserDataInterest, setUserDataPic } from './UserDataSlice';
+import { pushUserDataAccessibility, pushUserDataInterest, setUserDataAccessibility, setUserDataEdit, setUserDataInterest, setUserDataPic } from './UserDataSlice';
 import { ReactElement, useEffect, useState } from 'react';
 import { isLoaded, useFirebase, useFirebaseConnect } from 'react-redux-firebase';
 import { pushSelectedInterest } from '../Interest/InterestSlice';
@@ -16,22 +16,29 @@ const UserDataDialog: React.FC = () => {
   const firebase = useFirebase();
   const storage = getStorage();
   const open = useSelector((state: PersistState) => state.userData.edit)
+  //#region gather data from firebase
   useFirebaseConnect({ path: "interest" })
   const interests = useSelector((state: PersistState) => state.firebase.data.interest)
   useFirebaseConnect({ path: "accessibility" })
   const accessiblities = useSelector((state: PersistState) => state.firebase.data.accessibility)
+  //#endregion
+  //#region get the user information
   const auth = useSelector((state: PersistState) => state.firebase.auth)
   useFirebaseConnect({ path: `users/${auth.uid}` })
   const userData = useSelector((state: PersistState) => state.userData)
+    //#endregion
   const [currInterest, setInterest] = useState<String[]>(userData.currInterest)
   const [currAccessibility, setAccess] = useState<String[]>(userData.currAccessibility)
   const [profilePic, setPic] = useState<String>(userData.profilePic);
   const [url, setURL] = useState<string>('');
-
+  //#region handle logic for adding an interest/access/image to the local state and redux state
   const handleInterestClick = (e: any) => {
     if (currInterest.includes(e.target.innerText)) {
+
       const newInterest = currInterest.filter(curr => { return e.target.innerText !== curr })
+      // const newInterest2 = currInterest.filter(curr => { return "Low vision" !== curr || "Uses a wheelchair" !== curr})
       setInterest(newInterest)
+      // console.log(newInterest)
       store.dispatch(setUserDataInterest(newInterest))
     } else {
       setInterest([...currInterest, e.target.innerText])
@@ -42,7 +49,7 @@ const UserDataDialog: React.FC = () => {
     if (currAccessibility.includes(e.target.innerText)) {
       const newAccess = currAccessibility.filter(curr => { return e.target.innerText !== curr })
       setAccess(newAccess);
-      store.dispatch(setUserDataInterest(newAccess))
+      store.dispatch(setUserDataAccessibility(newAccess))
     } else {
       setAccess([...currAccessibility, e.target.innerText])
       store.dispatch(pushUserDataAccessibility(e.target.innerText))
@@ -60,6 +67,11 @@ const UserDataDialog: React.FC = () => {
     setURL(URL.createObjectURL(e.target.files[0]))
     store.dispatch(setUserDataPic(`users/${auth.uid}`))
   }
+  //#endregion
+
+  //check if interest & accessibilities &  userData is loaded in from firebase
+  //then generate chip for to be click on, profileImage to be change
+  //also handle closing and submiting logic of the dialog
   if (isLoaded(interests) && isLoaded(accessiblities) && isLoaded(userData)) {
     const backDropCheck = (event: any, reason: string) => {
       if (reason && reason == "backdropClick" || reason && reason == "escapeKeyDown")

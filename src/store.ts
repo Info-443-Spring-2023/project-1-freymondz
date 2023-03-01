@@ -12,6 +12,7 @@ import { InterestState } from "./features/Interest/InterestSlice"
 import interestReducer from "./features/Interest/InterestSlice"
 import { connect, ConnectedProps } from "react-redux"
 import { filtersState } from "./features/FilterBar/FiltersSlice"
+import filterReducer from "./features/FilterBar/FiltersSlice"
 
 
 const rootPersistConfig = {
@@ -48,7 +49,8 @@ const rootReducer = combineReducers({
     organizations: orgReducer,
     firebase: firebaseReducer,
     interests: interestReducer,
-    userData: userDataReducer
+    userData: userDataReducer,
+    filters: filterReducer
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer)
