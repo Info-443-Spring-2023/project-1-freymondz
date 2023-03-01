@@ -16,18 +16,22 @@ const UserDataDialog: React.FC = () => {
   const firebase = useFirebase();
   const storage = getStorage();
   const open = useSelector((state: PersistState) => state.userData.edit)
+  //#region gather data from firebase
   useFirebaseConnect({ path: "interest" })
   const interests = useSelector((state: PersistState) => state.firebase.data.interest)
   useFirebaseConnect({ path: "accessibility" })
   const accessiblities = useSelector((state: PersistState) => state.firebase.data.accessibility)
+  //#endregion
+  //#region get the user information
   const auth = useSelector((state: PersistState) => state.firebase.auth)
   useFirebaseConnect({ path: `users/${auth.uid}` })
   const userData = useSelector((state: PersistState) => state.userData)
+    //#endregion
   const [currInterest, setInterest] = useState<String[]>(userData.currInterest)
   const [currAccessibility, setAccess] = useState<String[]>(userData.currAccessibility)
   const [profilePic, setPic] = useState<String>(userData.profilePic);
   const [url, setURL] = useState<string>('');
-
+  //#region handle logic for adding an interest/access/image to the local state and redux state
   const handleInterestClick = (e: any) => {
     if (currInterest.includes(e.target.innerText)) {
       const newInterest = currInterest.filter(curr => { return e.target.innerText !== curr })
@@ -60,6 +64,11 @@ const UserDataDialog: React.FC = () => {
     setURL(URL.createObjectURL(e.target.files[0]))
     store.dispatch(setUserDataPic(`users/${auth.uid}`))
   }
+  //#endregion
+
+  //check if interest & accessibilities &  userData is loaded in from firebase
+  //then generate chip for to be click on, profileImage to be change
+  //also handle closing and submiting logic of the dialog
   if (isLoaded(interests) && isLoaded(accessiblities) && isLoaded(userData)) {
     const backDropCheck = (event: any, reason: string) => {
       if (reason && reason == "backdropClick" || reason && reason == "escapeKeyDown")

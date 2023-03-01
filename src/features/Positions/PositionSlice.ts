@@ -11,7 +11,7 @@ const initialState: PositionsState = {
   }
 
 const organizationsSlice = createSlice({
-    name: 'organizations',
+    name: 'positions',
     initialState,
     reducers: {
         setPositionId: (state, action: PayloadAction<string>) => {
