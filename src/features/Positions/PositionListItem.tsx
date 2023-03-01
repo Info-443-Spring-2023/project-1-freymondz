@@ -19,6 +19,17 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorder from "@mui/icons-material/BookmarkBorder";
 import { Link } from "@mui/material";
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+
+const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  }));
 
 const Img = styled('img')({
     margin: 'auto',
@@ -102,6 +113,7 @@ const PositionListItem = ({ accessibility, commitment,
                             {description}
                         </Typography>
                     </CardContent>
+                    <Button href={link} target="_blank" rel="noreferrer">Sign Up</Button>
                     <CardActions disableSpacing>
                         <ExpandMore
                             expand={expanded}
@@ -114,10 +126,20 @@ const PositionListItem = ({ accessibility, commitment,
                     </CardActions>
                     <Collapse in={expanded} timeout="auto" unmountOnExit>
                         <CardContent>
-                            <Typography paragraph>Accessibility: {accessibility}</Typography>
-                            <Typography paragraph>Key Interests: {interest}</Typography>
-                            <Typography paragraph>Comittment Level: {commitment}</Typography>
-                            <Typography paragraph>External Link: {link}</Typography>
+                        <Grid container spacing={2}>
+                            <Grid item xs={6}>
+                                <Item>{accessibility}</Item>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Item>{interest}</Item>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Item>{commitment}</Item>
+                            </Grid>
+                            <Grid item xs={6}>
+                                <Item>{location}</Item>
+                            </Grid>
+                        </Grid>
                         </CardContent>
                     </Collapse>
                 </Box>
