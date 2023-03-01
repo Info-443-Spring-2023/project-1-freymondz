@@ -1,7 +1,7 @@
-import { OrganizationsState } from "./features/OrgList/OrgsSlice"
+import { PositionsState } from "./features/Positions/PositionSlice"
 import storage from "redux-persist/lib/storage"
 import { persistReducer, persistStore } from "redux-persist"
-import orgReducer from './features/OrgList/OrgsSlice'
+import orgReducer from './features/Positions/PositionSlice'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { firebaseReducer, FirebaseReducer } from 'react-redux-firebase'
 import { Accessibility, Interest, Organization, Position, UserData } from './dbSchemas'
@@ -11,12 +11,14 @@ import userDataReducer from "./features/UserDataDialog/UserDataSlice"
 import { InterestState } from "./features/Interest/InterestSlice"
 import interestReducer from "./features/Interest/InterestSlice"
 import { connect, ConnectedProps } from "react-redux"
+import { filtersState } from "./features/FilterBar/FiltersSlice"
+import filterReducer from "./features/FilterBar/FiltersSlice"
 
 
 const rootPersistConfig = {
     key: 'root',
     storage,
-    blacklist: ['interests']
+    blacklist: ['interests', 'position']
 }
 
 
@@ -37,16 +39,18 @@ interface DBSchema {
 // there will be more
 export type RootState = {
     firebase: FirebaseReducer.Reducer<UserProfile, DBSchema>
-    organizations: OrganizationsState,
+    positions: PositionsState,
     interests: InterestState,
-    userData: UserDataState
+    userData: UserDataState,
+    filters: filtersState
 }
 
 const rootReducer = combineReducers({
     organizations: orgReducer,
     firebase: firebaseReducer,
     interests: interestReducer,
-    userData: userDataReducer
+    userData: userDataReducer,
+    filters: filterReducer
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer)

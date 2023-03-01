@@ -1,6 +1,7 @@
 import * as React from 'react';
 import NavBar from "../NavBar/NavBar"
 import { Typography } from '@mui/material';
+import Footer from '../NavBar/Footer';
 
 const AboutPage: React.FC = () => {
     return (
@@ -22,6 +23,8 @@ const AboutPage: React.FC = () => {
                     title="Embedded youtube"
                 />
             </div>
+
+            <Footer></Footer>
 
         </>
     )
