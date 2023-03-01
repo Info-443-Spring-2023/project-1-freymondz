@@ -16,6 +16,7 @@ import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import AboutPage from './features/AboutPage/AboutPage';
 import NavBar from './features/NavBar/NavBar';
 import UserDataDialog from './features/UserDataDialog/UserDataDialog';
+import Footer from './features/NavBar/Footer';
 
 
 /**
@@ -177,6 +178,7 @@ function App() {
       <Route path="/Home" element={<HomePage />} />
       <Route path="/About" element={<AboutPage />} />
     </Routes>
+    <Footer></Footer>
     </>
 
   );

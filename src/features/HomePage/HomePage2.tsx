@@ -17,7 +17,6 @@ const HomePage: React.FC = () => {
                     <OrgList />
                 </Grid>
             </Grid>
-            <Footer></Footer>
         </>
     )
 

@@ -12,7 +12,6 @@ const AboutPage: React.FC = () => {
 
             <Typography variant="body1">List of what the website can do such as features</Typography>
 
-            
             <Typography variant="body1">The following TedX video presents speaker, 13 year old Kofoworola Jolaoso, as she talks about the importance of allowing and letting kids start volunteering at a young age. The main problem that Jolaoso states is that the problem isnt the lack of interest but the lack of knowledge in helping & see what is avialabe to help in.  </Typography>
 
             <Typography></Typography>
@@ -27,8 +26,6 @@ const AboutPage: React.FC = () => {
                     title="Embedded youtube"
                 />
             </div>
-
-            <Footer></Footer>
 
         </>
     )

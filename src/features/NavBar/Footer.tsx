@@ -23,13 +23,25 @@ const Footer: React.FC = () => {
                         />
                     </Grid>
                     <Grid item xs={12}>
-                        <Typography color="white" variant="h5">
-                            Website Name
-                        </Typography>
+                    <Typography
+                        variant="h6"
+                        noWrap
+                        component="a"
+                        href="/"
+                        sx={{
+                            mr: 2,
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'white',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        FutureForward
+                    </Typography>
                     </Grid>
                     <Grid item xs={12}>
                         <Typography color="white" variant="subtitle1">
-                            {`${new Date().getFullYear()}`}
+                        &copy;{`${new Date().getFullYear()}`}
                         </Typography>
                     </Grid>
                 </Grid>
