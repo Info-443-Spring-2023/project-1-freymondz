@@ -1,12 +1,10 @@
 import * as React from 'react';
-import NavBar from "../NavBar/NavBar"
 import { Typography } from '@mui/material';
 import Footer from '../NavBar/Footer';
 
 const AboutPage: React.FC = () => {
     return (
         <>
-            <NavBar />
             <Typography>
                 <h1 >About Our Site</h1>
             </Typography>

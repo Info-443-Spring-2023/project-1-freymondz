@@ -14,6 +14,8 @@ import { Navigate } from 'react-router-dom';
 import { Home } from '@mui/icons-material';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import AboutPage from './features/AboutPage/AboutPage';
+import NavBar from './features/NavBar/NavBar';
+import UserDataDialog from './features/UserDataDialog/UserDataDialog';
 
 
 /**
@@ -166,12 +168,17 @@ const validateEmail = (potentialEmail: string) => {
 
 function App() {
   return (
-    <Routes>
+    <>
+      <UserDataDialog />
+      <NavBar />
+      <Routes>
       <Route path="*" element={<Navigate to="/" />} />
       <Route path="/" element={<HomePage />} />
       <Route path="/Home" element={<HomePage />} />
       <Route path="/About" element={<AboutPage />} />
     </Routes>
+    </>
+
   );
 }
 
