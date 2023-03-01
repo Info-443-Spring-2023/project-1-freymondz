@@ -4,7 +4,7 @@ import { useAppSelector } from '../../hooks';
 import { PersistState, store } from '../../store';
 import NavBar from "../NavBar/NavBar"
 import { useDispatch, useSelector } from 'react-redux';
-import { pushUserDataAccessibility, pushUserDataInterest, setUserDataEdit, setUserDataInterest, setUserDataPic } from './UserDataSlice';
+import { pushUserDataAccessibility, pushUserDataInterest, setUserDataAccessibility, setUserDataEdit, setUserDataInterest, setUserDataPic } from './UserDataSlice';
 import { ReactElement, useEffect, useState } from 'react';
 import { isLoaded, useFirebase, useFirebaseConnect } from 'react-redux-firebase';
 import { pushSelectedInterest } from '../Interest/InterestSlice';
@@ -34,8 +34,11 @@ const UserDataDialog: React.FC = () => {
   //#region handle logic for adding an interest/access/image to the local state and redux state
   const handleInterestClick = (e: any) => {
     if (currInterest.includes(e.target.innerText)) {
+
       const newInterest = currInterest.filter(curr => { return e.target.innerText !== curr })
+      // const newInterest2 = currInterest.filter(curr => { return "Low vision" !== curr || "Uses a wheelchair" !== curr})
       setInterest(newInterest)
+      // console.log(newInterest)
       store.dispatch(setUserDataInterest(newInterest))
     } else {
       setInterest([...currInterest, e.target.innerText])
@@ -46,7 +49,7 @@ const UserDataDialog: React.FC = () => {
     if (currAccessibility.includes(e.target.innerText)) {
       const newAccess = currAccessibility.filter(curr => { return e.target.innerText !== curr })
       setAccess(newAccess);
-      store.dispatch(setUserDataInterest(newAccess))
+      store.dispatch(setUserDataAccessibility(newAccess))
     } else {
       setAccess([...currAccessibility, e.target.innerText])
       store.dispatch(pushUserDataAccessibility(e.target.innerText))

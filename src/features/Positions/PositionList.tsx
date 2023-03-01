@@ -46,6 +46,7 @@ const OrgList: React.FC = () => {
         if (isLoaded(positions) && isLoaded(auth) && isLoaded(userData) && isLoaded(filters)) {
             if (oldFilter !== filters) {
                 if (filters.length > 0) {
+                    console.log(filters)
                     setDisplayPositions(recommendationFunction(Object.entries(positions).filter((position) => {
                         const currentPosition = position[1] as any
                         const posPropertyString = currentPosition.interest.concat(", ", currentPosition.accessibility)
@@ -74,7 +75,7 @@ const OrgList: React.FC = () => {
             {displayPositions.length > 0 ?
                 displayPositions.map((position) => {
                     const currentPosition = position[1] as any
-                    console.log(currentPosition.accessibility)
+                    // console.log(currentPosition.accessibility)
                     return (
                         <PositionListItem
                             key={`${currentPosition.organization}_${currentPosition.name}`}
