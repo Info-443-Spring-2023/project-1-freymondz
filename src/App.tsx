@@ -16,6 +16,7 @@ import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import AboutPage from './features/AboutPage/AboutPage';
 import NavBar from './features/NavBar/NavBar';
 import UserDataDialog from './features/UserDataDialog/UserDataDialog';
+import DashBoard from './features/DashBoard/DashBoard';
 
 
 /**
@@ -172,12 +173,12 @@ function App() {
       <UserDataDialog />
       <NavBar />
       <Routes>
-      <Route path="*" element={<Navigate to="/" />} />
-      <Route path="/" element={<HomePage />} />
-      <Route path="/Home" element={<HomePage />} />
-      <Route path="/About" element={<AboutPage />} />
-      <Route path="/Dashboard/Profile" element={<DashBoard />}  />
-    </Routes>
+        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/Home" element={<HomePage />} />
+        <Route path="/About" element={<AboutPage />} />
+        <Route path="/Dashboard/Profile" element={<DashBoard />}  />
+      </Routes>
     </>
 
   );
