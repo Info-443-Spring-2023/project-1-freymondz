@@ -133,23 +133,27 @@ const PositionListItem = ({ accessibility, commitment,
                         <Grid container spacing={2}>
                             <Grid item xs={6}>
                                 <Item>
-                                    <AccessibilityNewIcon></AccessibilityNewIcon>
-                                    {accessibility}</Item>
+                                    <AccessibilityNewIcon sx = {{verticalAlign: 'middle'}}></AccessibilityNewIcon>
+                                    {accessibility}
+                                </Item>
                             </Grid>
                             <Grid item xs={6}>
                                 <Item>
-                                    <InterestsIcon></InterestsIcon>
-                                    {interest}</Item>
+                                    <InterestsIcon sx = {{verticalAlign: 'middle'}}></InterestsIcon>
+                                    {interest}
+                                </Item>
                             </Grid>
                             <Grid item xs={6}>
                                 <Item>
-                                    <ScheduleIcon></ScheduleIcon>
-                                    {commitment}</Item>
+                                    <ScheduleIcon sx = {{verticalAlign: 'middle'}}></ScheduleIcon>
+                                    {commitment}
+                                </Item>
                             </Grid>
                             <Grid item xs={6}>
                                 <Item>
-                                    <LocationOnIcon></LocationOnIcon>
-                                    {location}</Item>
+                                    <LocationOnIcon sx = {{verticalAlign: 'middle'}}></LocationOnIcon>
+                                    {location}
+                                </Item>
                             </Grid>
                         </Grid>
                         </CardContent>
