@@ -10,14 +10,14 @@ export const recommendationFunction = (positions: [string, Position][], auth: Fi
   // useFirebaseConnect({ path: `users/${auth.uid}` })
   // const userData = useAppSelector(state => state.userData)
   // #region if no filters
-  console.log(filters.length === 0)
+  // console.log(filters.length === 0)
   if (filters.length === 0) {
     if(userData) {
       const userFilterRec = userData.currAccessibility.concat(userData.currInterest)
-      console.log(userData.currAccessibility)
-      console.log(userData.currInterest)
-      const result = sortPosition(positions, userFilterRec)
-      console.log(result)
+      // console.log(userData.currAccessibility)
+      // console.log(userData.currInterest)
+      // const result = sortPosition(positions, userFilterRec)
+      // console.log(result)
       return sortPosition(positions, userFilterRec)
     }
   } else {
