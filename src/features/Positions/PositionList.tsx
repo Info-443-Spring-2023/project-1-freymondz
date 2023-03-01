@@ -5,6 +5,7 @@ import { Box } from "@mui/material";
 import { isLoaded, useFirebaseConnect } from "react-redux-firebase";
 import { Position } from "../../dbSchemas";
 import { useState } from "react";
+import { recommendationFunction } from "./Recommedation";
 
 // TO:Do loop through all the positions to make the org list
 
@@ -29,16 +30,23 @@ const OrgList: React.FC = () => {
 
     useFirebaseConnect({ path: "positions" })
 
+
     const positions = useAppSelector(state => state.firebase.data.positions)
     const filters = useAppSelector(state => state.filters.activeFilters)
+
+    const auth = useAppSelector(state => state.firebase.auth)
+    useFirebaseConnect({ path: `users/${auth.uid}` })
+    const userData = useAppSelector(state => state.userData)
+
+
     const [oldFilter, setOldFilter] = useState<String[]>([])
     const [displayPositions, setDisplayPositions] = useState<[string, Position][]>([])
-    console.log(filters)
+    // console.log(filters)
     React.useEffect(() => {
-        if (isLoaded(positions)) {
+        if (isLoaded(positions) && isLoaded(auth) && isLoaded(userData) && isLoaded(filters)) {
             if (oldFilter !== filters) {
                 if (filters.length > 0) {
-                    setDisplayPositions(Object.entries(positions).filter((position) => {
+                    setDisplayPositions(recommendationFunction(Object.entries(positions).filter((position) => {
                         const currentPosition = position[1] as any
                         const posPropertyString = currentPosition.interest.concat(", ", currentPosition.accessibility)
                         const posProperty = posPropertyString.split(", ")
@@ -48,19 +56,19 @@ const OrgList: React.FC = () => {
                             }
                         }
                         return false
-                    }))
+                    }), auth, filters, userData))
                 }
                 if (filters.length === 0) {
-                    setDisplayPositions(Object.entries(positions).map(position => {return position}))
+                    setDisplayPositions(recommendationFunction((Object.entries(positions).map(position => {return position})), auth, filters, userData))
                 }
                 setOldFilter(filters)
-                console.log(oldFilter)
+                // console.log(oldFilter)
             }
 
         }
 
-    }, [positions, filters, displayPositions])
-    console.log(displayPositions)
+    }, [positions, filters, displayPositions, auth, filters, userData])
+    // console.log(displayPositions)
     return (
         <Box>
             {displayPositions.length > 0 ?
