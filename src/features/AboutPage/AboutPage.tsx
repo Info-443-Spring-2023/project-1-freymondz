@@ -8,8 +8,14 @@ const AboutPage: React.FC = () => {
             <Typography>
                 <h1 >About Our Site</h1>
             </Typography>
-            <Typography variant="body1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tortor dignissim convallis aenean. At auctor urna nunc id cursus. A cras semper auctor neque vitae tempus quam pellentesque. Elementum curabitur vitae nunc sed. Dignissim suspendisse in est ante in nibh mauris. Sit amet dictum sit amet justo donec enim diam. Accumsan sit amet nulla facilisi morbi tempus iaculis urna id. Ac turpis egestas maecenas pharetra convallis. Enim diam vulputate ut pharetra. Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Ornare aenean euismod elementum nisi quis eleifend quam. Dolor sed viverra ipsum nunc aliquet bibendum enim. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Vestibulum sed arcu non odio euismod lacinia at quis. Nibh praesent tristique magna sit amet purus gravida. Eu ultrices vitae auctor eu augue ut lectus arcu. Quis lectus nulla at volutpat diam ut.</Typography>
-            <Typography variant="body1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ac tortor dignissim convallis aenean. At auctor urna nunc id cursus. A cras semper auctor neque vitae tempus quam pellentesque. Elementum curabitur vitae nunc sed. Dignissim suspendisse in est ante in nibh mauris. Sit amet dictum sit amet justo donec enim diam. Accumsan sit amet nulla facilisi morbi tempus iaculis urna id. Ac turpis egestas maecenas pharetra convallis. Enim diam vulputate ut pharetra. Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Ornare aenean euismod elementum nisi quis eleifend quam. Dolor sed viverra ipsum nunc aliquet bibendum enim. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Vestibulum sed arcu non odio euismod lacinia at quis. Nibh praesent tristique magna sit amet purus gravida. Eu ultrices vitae auctor eu augue ut lectus arcu. Quis lectus nulla at volutpat diam ut.</Typography>
+            <Typography variant="body1">Volunteering is a key importance to the development of our society & communities. Through volunteering, everyone is able to learn aout global matters & help make a change not only within their community but through the world too. Our website "FutureForward" allows our younger audience of studenst to be able to be more knowledgable on ways of helping in different sectors near them. Through our website "FutureForwrd", students can :  </Typography>
+
+            <Typography variant="body1">List of what the website can do such as features</Typography>
+
+            <Typography variant="body1">The following TedX video presents speaker, 13 year old Kofoworola Jolaoso, as she talks about the importance of allowing and letting kids start volunteering at a young age. The main problem that Jolaoso states is that the problem isnt the lack of interest but the lack of knowledge in helping & see what is avialabe to help in.  </Typography>
+
+            <Typography></Typography>
+            
             <div className="video-responsive">
                 <iframe
                     width="853"
@@ -20,8 +26,6 @@ const AboutPage: React.FC = () => {
                     title="Embedded youtube"
                 />
             </div>
-
-            <Footer></Footer>
 
         </>
     )

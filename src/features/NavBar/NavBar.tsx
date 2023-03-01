@@ -80,14 +80,14 @@ const NavBar: React.FC = () => {
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
+                            // fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
                         }}
                     >
-                        Name
+                        FutureForward
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -126,34 +126,25 @@ const NavBar: React.FC = () => {
                             ))}
                         </Menu>
                     </Box>
-                    <Box
-                        component="img"
-                        sx={{
-                            height: '3rem',
-                            width: '3rem',
-                            display: { xs: 'flex', md: 'none' }, mr: 1
-
-                        }}
-                        alt="Site Logo"
-                        src="newLogo.png"
-                    />
+                    
                     <Typography
                         variant="h5"
                         noWrap
                         component="a"
                         href=""
                         sx={{
-                            mr: 2,
+                            // mr: 2,
                             display: { xs: 'flex', md: 'none' },
-                            flexGrow: 1,
-                            fontFamily: 'monospace',
+                            fontSize: 14,
+                            // flexGrow: 1,
+                            // fontFamily: 'monospace',
                             fontWeight: 700,
-                            letterSpacing: '.3rem',
+                            // letterSpacing: '.3rem',
                             color: 'inherit',
                             textDecoration: 'none',
                         }}
                     >
-                        Name
+                        FutureForward
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (

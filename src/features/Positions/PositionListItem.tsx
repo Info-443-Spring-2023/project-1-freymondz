@@ -65,6 +65,7 @@ interface OrgListItemProps {
     accessibility: string,
     commitment: string,
     description: string,
+    img: string,
     interest: string,
     link: string,
     location: string,
@@ -76,7 +77,7 @@ interface OrgListItemProps {
 }
 
 const PositionListItem = ({ accessibility, commitment,
-    description, interest, link, location, min_age, name,
+    description, img, interest, link, location, min_age, name,
     organization }: OrgListItemProps) => {
 
     const firebase = useFirebase()
@@ -100,7 +101,7 @@ const PositionListItem = ({ accessibility, commitment,
                 <CardMedia
                     component="img"
                     sx={{ width: 175, height:200 }}
-                    image="newLogo.png"
+                    image= {img}
                     alt="Org Cover"
                 />
                 <Box sx={{ display: 'flex', flexDirection: 'column' }}>

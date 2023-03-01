@@ -74,7 +74,7 @@ const FilterList: React.FC = () => {
                                                 inputProps={{ 'aria-labelledby': labelId }}
                                             />
                                         </ListItemIcon>
-                                        <ListItemText id={labelId} primary={`Filter ${valueIndex + 1}: ${value[1].name}`} />
+                                        <ListItemText id={labelId} primary={`${value[1].name}`} />
                                     </ListItemButton>
                                 </ListItem>
                             );
@@ -106,7 +106,7 @@ const FilterList: React.FC = () => {
                                                 inputProps={{ 'aria-labelledby': labelId }}
                                             />
                                         </ListItemIcon>
-                                        <ListItemText id={labelId} primary={`Filter ${valueIndex + 1}: ${value[1].name}`} />
+                                        <ListItemText id={labelId} primary={`${value[1].name}`} />
                                     </ListItemButton>
                                 </ListItem>
                             );
