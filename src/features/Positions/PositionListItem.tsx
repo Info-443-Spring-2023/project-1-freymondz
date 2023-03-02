@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { useFirebase } from "react-redux-firebase"
+import { FirebaseReducer, isLoaded, useFirebase, useFirebaseConnect } from "react-redux-firebase"
 import { RootState } from "../../store"
 import { selectPositionId, setPositionId } from "./PositionSlice"
 
@@ -27,6 +27,9 @@ import InterestsIcon from '@mui/icons-material/Interests';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CakeIcon from '@mui/icons-material/Cake';
+import { useAppSelector } from "../../hooks";
+import { isEmpty } from "react-redux-firebase";
+import { useState } from "react";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -81,20 +84,36 @@ const PositionListItem = ({ accessibility, commitment,
     organization }: OrgListItemProps) => {
 
     const firebase = useFirebase()
-
+    const auth = useAppSelector(state => state.firebase.auth)
+    useFirebaseConnect({ path: `users/${auth.uid}` })
+    const user = useAppSelector(state => state.firebase.data.users)
+    const [color, setColor] = useState<boolean>(false)
+    React.useEffect (() => {
+        if (!isEmpty(auth) && isLoaded(auth) && !isEmpty(user) && isLoaded(user)) {
+            console.log(checkEquality(user, auth, organization, name) !== '')
+            setColor(checkEquality(user, auth, organization, name) !== '')
+        }
+    }, [auth, user])
+    // console.log(user)
     const onClick = () => {
-        // Object.keys(organizationsFromFirebase).forEach(() => {
-        //     //go into "organizations" from Firebase
-        //     //try to match the organization.name == 
-        // })
+        const keyToRemove = checkEquality(user, auth, organization, name)
+        if (keyToRemove === '') {
+            console.log("pushing")
+            firebase.push(`users/${auth.uid}/bookmarks`, {organization: organization, name: name}).then(() => console.log("data upload successfully!"))
+            .catch(err => console.log(err));
+        } else {
+            console.log("removing")
+            firebase.remove(`users/${auth.uid}/bookmarks/${keyToRemove}`).then(() => console.log("data remove successfully!"))
+            .catch(err => console.log(err));
+        }
     }
-
+    // console.log(!isEmpty(auth) && isLoaded(auth))
     const [expanded, setExpanded] = React.useState(false);
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-
+    console.log(color)
     return (
         <Box paddingBottom={5}>
             <Card sx={{ display: 'flex' }}>
@@ -108,10 +127,11 @@ const PositionListItem = ({ accessibility, commitment,
                     <CardHeader
                         title={name}
                         subheader={organization}
-                        action={
-                            <IconButton aria-label="bookmark">
-                                <BookmarkBorder />
-                            </IconButton>
+                        action= {
+                            !isEmpty(auth) && isLoaded(auth) && !isEmpty(user) && isLoaded(user)?
+                            <IconButton aria-label="bookmark" onClick={onClick} color={color? 'secondary': 'primary'}>
+                                {color? <BookmarkIcon />: <BookmarkBorder />}
+                            </IconButton> : <></>
                         }
                     />
                     <CardContent>
@@ -172,4 +192,33 @@ const PositionListItem = ({ accessibility, commitment,
     );
 }
 
+
+function shallowEqual(object1: any, object2: any) {
+    const keys1 = Object.keys(object1);
+    const keys2 = Object.keys(object2);
+    if (keys1.length !== keys2.length) {
+      return false;
+    }
+    for (let key of keys1) {
+      if (object1[key] !== object2[key]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+function checkEquality(user: Record<string, any>, auth: FirebaseReducer.AuthState, organization: string, name: string,) {
+    const bookmark = user[auth.uid]?.bookmarks
+    const keys = bookmark ? Object.keys(user[auth.uid]?.bookmarks) : undefined
+    let keyEqual= ''
+    if (keys) {
+        for (const key of keys) {
+            if (shallowEqual(bookmark[key],{organization: organization, name: name})) {
+                keyEqual = key
+                break
+            }
+        }
+    }
+    return keyEqual
+}
 export default PositionListItem
