@@ -6,10 +6,12 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import { useAppSelector } from '../../hooks';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { selectFilters, setFilters } from './FiltersSlice';
 import { store } from '../../store';
 import { useFirebaseConnect } from 'react-redux-firebase';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import InterestsIcon from '@mui/icons-material/Interests';
 
 
 // Change line 28 to map over filters
@@ -51,7 +53,8 @@ const FilterList: React.FC = () => {
     return (
         <Box>
             <Box>
-                Interests
+                <Typography align='center'>Interests<InterestsIcon sx = {{verticalAlign: 'middle'}}></InterestsIcon>
+                </Typography>
                 <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                     {interests ?
                         Object.entries(interests).map((value) => {
@@ -83,7 +86,8 @@ const FilterList: React.FC = () => {
                 </List>
             </Box>
             <Box>
-                Accessibilities
+                <Typography align='center'>Accessibilities<AccessibilityNewIcon sx = {{verticalAlign: 'middle'}}></AccessibilityNewIcon>
+                </Typography>
                 <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                     {accessibilities ?
                         Object.entries(accessibilities).map((value) => {
