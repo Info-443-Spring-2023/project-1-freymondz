@@ -15,12 +15,12 @@ Futureforward's mission is to connect highschool students to volunteering opport
 All volunteer positions available were sourced by the Future5 team to ensure that the position requirements would fit the needs and interests of our target users. We sourced a variety of positions to ensure that these needs were met and that the user had varying options.
 
 The positions and organizations we sourced for volunteering opportuntities were spread across a variety of topics included but not limited to:
--eduacation
--homelessness
--the arts
--environment
--senior care
--health
+- Eduacation
+- Homelessness
+- The arts
+- Environment
+- Senior care
+- Health
 # Main Features
 - Home Page which displays all available volunteering opportunities, with descriptions, committment requirement and accesibility information
 - Filtering System
