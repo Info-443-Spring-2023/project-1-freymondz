@@ -25,7 +25,7 @@ const UserDataDialog: React.FC = () => {
   //#region get the user information
   const auth = useSelector((state: PersistState) => state.firebase.auth)
   useFirebaseConnect({ path: `users/${auth.uid}` })
-  const userData = useSelector((state: PersistState) => state.userData)
+  const userData = useAppSelector((state) => state.userData)
     //#endregion
   const [currInterest, setInterest] = useState<String[]>(userData.currInterest)
   const [currAccessibility, setAccess] = useState<String[]>(userData.currAccessibility)
