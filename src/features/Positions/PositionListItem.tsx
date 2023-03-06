@@ -119,7 +119,7 @@ const PositionListItem = ({ accessibility, commitment,
             <Card sx={{ display: 'flex' }}>
                 <CardMedia
                     component="img"
-                    sx={{ width: 175, height:200 }}
+                    sx={{ width: { xs: 125, md: 200 }, height:{ xs: 125, md: 200 } }}
                     image= {img}
                     alt="Org Cover"
                 />
