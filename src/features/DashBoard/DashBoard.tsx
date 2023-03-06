@@ -94,8 +94,20 @@ const DashBoard: React.FC = () => {
                     {/* <input hidden accept="image/*" multiple type="file" onInput={handleImageInput} /> */}
                 </Button>
             </Box>
+
+            <Typography>
+                <ul>
+
+                </ul>
+            </Typography>
+
             <Box>
-                Bookmarked Opportunities
+                <b>Bookmarked Opportunities</b>
+                <Typography>
+                    <ul>
+
+                    </ul>
+                </Typography>
                 {displayPositions.length > 0 ?
                     displayPositions.map((position: any) => {
                         const currentPosition = position as any
@@ -118,6 +130,23 @@ const DashBoard: React.FC = () => {
 
                     })
                     : <></>}
+            </Box>
+
+            <Box>
+                <b>Volunteer History</b>
+                <Typography>
+                    <ul>
+
+                    </ul>
+                </Typography>
+                
+
+                <Typography>
+                    <ul>
+
+                    </ul>
+                </Typography>
+
             </Box>
         </Box>
     )
