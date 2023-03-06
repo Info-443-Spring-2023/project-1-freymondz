@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import Footer from '../NavBar/Footer';
 
 const AboutPage: React.FC = () => {
     return (
         <>
             <Typography>
-                <h1 >About Our Site</h1>
+                About Our Site
             </Typography>
             <Typography variant="body1">Volunteering is a key importance to the development of our society & communities. Through volunteering, everyone is able to learn aout global matters & help make a change not only within their community but through the world too. Our website "FutureForward" allows our younger audience of studenst to be able to be more knowledgable on ways of helping in different sectors near them. Through our website "FutureForwrd", students can :  </Typography>
 
@@ -16,16 +16,16 @@ const AboutPage: React.FC = () => {
 
             <Typography></Typography>
             
-            <div className="video-responsive">
+            <Box className="video-responsive">
                 <iframe
-                    width="853"
-                    height="480"
+                    // width="853"
+                    // height="480"
                     src={`https://www.youtube.com/embed/fDocxsO2tYA`}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     title="Embedded youtube"
                 />
-            </div>
+            </Box>
 
         </>
     )

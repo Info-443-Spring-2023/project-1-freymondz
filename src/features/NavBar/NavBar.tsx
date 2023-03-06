@@ -192,7 +192,7 @@ const NavBar: React.FC = () => {
                                     </Button>
                                 </Link>
                                 :
-                                <></>
+                                <Link key={"Test"}></Link>
                         ))}
                     </Box>
 
