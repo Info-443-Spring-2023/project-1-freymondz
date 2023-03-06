@@ -1,17 +1,22 @@
 
 # Testing Protocol & Known Bugs
-A full test of the MVP would include 1) clicking on the link to the webpage and 2) going through each task listed below. The tasks below are listed in the reccomended order of testing.
+A full test of the MVP would include 1) clicking on the link to the webpage and 2) going through each task listed below. The tasks below are listed in the recommended order of testing.
 
 ## List of Tasks By Function (Recommended Order of Testing)
 
 ### Function 1: View Volunteer Positions
 1. Ensure you are on the homepage
-2. Click on small arrow of any volunteer postion card and then click on small arrow a second time 
-3. Click on "Sign Up" button of any volunteer postion
+    - **Expected Result:** You should see a navigation bar on the top, a list of volunteer postions on the left and filters on the right
+3. Click on the small arrow of any volunteer postion card and then click on small arrow a second time
+    - **Expected Result:** The card should expand revealing addtional information about the volunteer postions (accessability, interests, commitment, age requirement, and location)
+5. Click on "Sign Up" button of any volunteer postion
+    - **Expected Results:** An external link should open in a new tab
 
 ### Function 2: Filtering Volunteer Positions
 4. Click on filter (any checkbox)
-5. Click on any checked filter
+    - **Expected Results:** Check box should be "checked" and only volunteer postions that contain the interest or accessability check should be displayed. Note: If you select multiple filters volunteer positions that fall under *at least one* filter will be displayed.
+6. Click on any checked filter
+    - **Expected Results:** Clicking a checked box should uncheck the box and unfilter the volunteer postions
 
 ### Function 3: Log In
 6. Click on the "Sign in with Google Button" in upper right corner and sign with any Google Account
