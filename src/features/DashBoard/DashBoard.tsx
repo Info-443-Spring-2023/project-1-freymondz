@@ -82,32 +82,22 @@ const DashBoard: React.FC = () => {
     return (
         <Box>
             {/* TODO: call the UserDataDialog react function component when u click on "edit profile" */}
-            <Box>
+            <Box padding={6}>
                 <Avatar alt="Demo user profile" src={url} sx={{ width: 150, height: 150, marginBottom: '1rem' }} />
                 {/* <DialogContentText sx={{ marginBottom: ".5em" }}>
                     Upload an Image for your profile?
                 </DialogContentText> */}
+
                 <MenuItem key={"Edit Profile"} onClick={() => { store.dispatch(setUserDataEdit(true)) }} />
 
                 <Button variant="contained" endIcon={<FileUploadIcon />} component="label" onClick={() => { store.dispatch(setUserDataEdit(true)) }}>
                     Edit Profile
                     {/* <input hidden accept="image/*" multiple type="file" onInput={handleImageInput} /> */}
                 </Button>
+
             </Box>
-
-            <Typography>
-                <ul>
-
-                </ul>
-            </Typography>
-
-            <Box>
-                <b>Bookmarked Opportunities</b>
-                <Typography>
-                    <ul>
-
-                    </ul>
-                </Typography>
+            <Box paddingLeft={{ xs:2, md: 6 }} paddingRight={{ xs:2, md: 6 }}>
+                <Typography variant="h5">Bookmarked Opportunities:</Typography>
                 {displayPositions.length > 0 ?
                     displayPositions.map((position: any) => {
                         const currentPosition = position as any
