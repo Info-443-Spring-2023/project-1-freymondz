@@ -15,7 +15,17 @@ const AboutPage: React.FC = () => {
             <Box padding={5}>
                 <Typography variant="body1">Volunteering is a key importance to the development of our society & communities. Through volunteering, everyone is able to learn aout global matters & help make a change not only within their community but through the world too. Our website "FutureForward" allows our younger audience of studenst to be able to be more knowledgable on ways of helping in different sectors near them. Through our website "FutureForwrd", students can :  </Typography>
 
-                <Typography variant="body1">List of what the website can do such as features</Typography>
+                <Typography variant="body1">
+                    <ul>
+                        <li>
+                            1. Register & create a personalized account. 
+                            2. Find volunteer oppourtunities based on filtered interests.
+                            3. Bookmark volunteer oppourtunities to be saved and seen in personal profiles
+                            4. Have accurate information on accessible volunteer oppourtunities.
+                            5. Save service information done within their personalized profiles.
+                        </li>
+                    </ul>
+                </Typography>
 
                 <Typography variant="body1">The following TedX video presents speaker, 13 year old Kofoworola Jolaoso, as she talks about the importance of allowing and letting kids start volunteering at a young age. The main problem that Jolaoso states is that the problem isnt the lack of interest but the lack of knowledge in helping & see what is avialabe to help in.  </Typography>
             </Box>
