@@ -13,6 +13,18 @@ const AboutPage: React.FC = () => {
                 </Typography>
             </Box>
             <Box padding={5}>
+                <Typography>
+                    <b>
+                        How might we help high school students discover local volunteering opportunities that align with their interests to better serve their community?
+                    </b>
+                </Typography>
+
+                <Typography>
+                    <ul>
+
+                    </ul>
+                </Typography>
+                
                 <Typography variant="body1">Volunteering is a key importance to the development of our society & communities. Through volunteering, everyone is able to learn aout global matters & help make a change not only within their community but through the world too. Our website "FutureForward" allows our younger audience of studenst to be able to be more knowledgable on ways of helping in different sectors near them. Through our website "FutureForwrd", students can :  </Typography>
 
                 <Typography variant="body1">
@@ -41,6 +53,12 @@ const AboutPage: React.FC = () => {
 
                 <Typography>
                     When developing this website for youth, we had in mind developing sustainable cities & communities to be able to make them more inclusive, safe, resilient and sustainable. The youth are the future of these cities & communities & therfore motivating them to create a sustainable city through volunteering is key for the future. 
+                </Typography>
+
+                <Typography>
+                    <ul>
+
+                    </ul>
                 </Typography>
 
                 <Typography variant="body1">
