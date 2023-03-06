@@ -78,7 +78,7 @@ const UserDataDialog: React.FC = () => {
         closeWithoutSubmit();
     }
     const handleClose = () => {
-      firebase.set(`users/${auth.uid}`, { interests: currInterest, accessibilities: currAccessibility, profile_picture: profilePic }).then(() => console.log("data upload successfully!"))
+      firebase.update(`users/${auth.uid}`, { interests: currInterest, accessibilities: currAccessibility, profile_picture: profilePic }).then(() => console.log("data upload successfully!"))
         .catch(err => console.log(err));
       store.dispatch(setUserDataEdit(false))
     }

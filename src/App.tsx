@@ -44,9 +44,9 @@ const App = () => {
         <Route path="/Home" element={<HomePage />} />
         <Route path="/About" element={<AboutPage />} />
         {auth.uid ? 
-          <Route path="/Dashboard/Profile" element={<DashBoard />} />
+          <Route path="/Dashboard" element={<DashBoard />} />
           :
-          <Route path="/Dashboard/Profile" element={<HomePage />} />
+          <Route path="/Dashboard" element={<HomePage />} />
         }
       </Routes>
     <Footer></Footer>

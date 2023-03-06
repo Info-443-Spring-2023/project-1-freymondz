@@ -12,6 +12,7 @@ const HomePage: React.FC = () => {
     const [open, setOpen] = React.useState<boolean>(false)
     const handleHideFilter = () => {
         setOpen(!open)
+        console.log(open)
     }
 
 
@@ -32,7 +33,7 @@ const HomePage: React.FC = () => {
             setSmall(true)
         } else {
             setSmall(false)
-        }    
+        }
     }, true)
 
     if (small) {
@@ -99,8 +100,11 @@ const HomePage: React.FC = () => {
                             </Button>
 
                         }
-                        <FilterBar />
-                    </Grid>
+                        {open ?
+                            <FilterBar />
+                            :
+                            <></>}                    
+                        </Grid>
                     <Grid item xs={8}>
                         <OrgList />
                     </Grid>

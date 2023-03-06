@@ -28,7 +28,7 @@ import { setUserDataEdit } from "../UserDataDialog/UserDataSlice";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 import { useState } from "react";
 
-const pages = ['Home', 'About', 'Dashboard/Profile'];
+const pages = ['Home', 'About', 'Dashboard'];
 const settings = ['Logout']
 
 const NavBar: React.FC = () => {
@@ -180,8 +180,8 @@ const NavBar: React.FC = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            page != 'Dashboard/Profile' ||
-                                (page == 'Dashboard/Profile' && auth.uid) ?
+                            page != 'Dashboard' ||
+                                (page == 'Dashboard' && auth.uid) ?
                                 <Link key={page} href={page} underline="none">
                                     <Button
                                         key={page}
