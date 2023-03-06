@@ -39,7 +39,13 @@ const AboutPage: React.FC = () => {
                     </ul>
                 </Typography>
 
-                <Typography variant="body1">The following TedX video presents speaker, 13 year old Kofoworola Jolaoso, as she talks about the importance of allowing and letting kids start volunteering at a young age. The main problem that Jolaoso states is that the problem isnt the lack of interest but the lack of knowledge in helping & see what is avialabe to help in.  </Typography>
+                <Typography>
+                    When developing this website for youth, we had in mind developing sustainable cities & communities to be able to make them more inclusive, safe, resilient and sustainable. The youth are the future of these cities & communities & therfore motivating them to create a sustainable city through volunteering is key for the future. 
+                </Typography>
+
+                <Typography variant="body1">
+                    The following TedX video presents speaker, 13 year old Kofoworola Jolaoso, as she talks about the importance of allowing and letting kids start volunteering at a young age. The main problem that Jolaoso states is that the problem isnt the lack of interest but the lack of knowledge in helping & see what is avialabe to help in. 
+                </Typography>
             </Box>
 
             <Box display="flex"
