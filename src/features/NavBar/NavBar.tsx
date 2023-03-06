@@ -61,8 +61,9 @@ const NavBar: React.FC = () => {
 
     const auth = useAppSelector((state) => state.firebase.auth)
 
-    const users = useAppSelector((state) => state.firebase.data.users)
+    // React.useEffect(()=> {
 
+    // }, [auth])
     return (
         <AppBar position="static" style={{ background: '#374785' }}>
             <Container maxWidth="xl">
@@ -127,39 +128,32 @@ const NavBar: React.FC = () => {
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    {/* navigate to="/page" */}
-                                    <Typography textAlign="center">{page}</Typography>
-                                    <Link key={page} href={page} underline="none">
-                                        <Button
-                                            key={page}
-                                            onClick={handleCloseNavMenu}
-                                            sx={{ my: 2, color: 'white', display: 'block' }}
-                                        >
-                                            {page}
-                                        </Button>
-                                    </Link>
-                                </MenuItem>
+                                page !== 'Dashboard' ||
+                                    (page === 'Dashboard' && auth.uid) ?
+                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                        {/* navigate to="/page" */}
+                                        {/* <Typography textAlign="center">{page}</Typography> */}
+                                        <Box>
+                                            <Link key={`${page}_Mobile_Link`} href={page} underline="none">
+                                                <Typography textAlign="center" sx={{fontSize: '1.5em',}}>{page}</Typography>
+                                                <Button
+                                                    key={`${page}_Mobile_Link_Button`}
+                                                    onClick={handleCloseNavMenu}
+                                                    sx={{ mx: 3, my: 1, color: 'white', display: 'block' }}
+                                                >
+                                                </Button>
+                                            </Link>
+                                        </Box>
+
+                                    </MenuItem> :
+                                    <Box key={`not_${page}_mobile`}></Box>
                                 // 'Home', 'About', 'Dashboard/Profile'
                             ))}
-                            {/* <MenuItem key={'Home'} onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">{'Home'}</Typography>
-                            </MenuItem>
-                            <MenuItem key={'About'} onClick={handleCloseNavMenu}>
-                                <Typography textAlign="center">{'About'}</Typography>
-                            </MenuItem>
-                            {isLoaded(auth) && !isEmpty(auth) 
-                                ?
-                                <MenuItem key={'Dashboard/Profile'} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{'Dashboard/Profile'}</Typography>
-                                </MenuItem>
-                                : <></>
-                            } */}
-
                         </Menu>
                     </Box>
 
                     <Typography
+                        key="topbar_title"
                         variant="h5"
                         noWrap
                         component="a"
@@ -180,11 +174,11 @@ const NavBar: React.FC = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            page != 'Dashboard' ||
-                                (page == 'Dashboard' && auth.uid) ?
-                                <Link key={page} href={page} underline="none">
+                            page !== 'Dashboard' ||
+                                (page === 'Dashboard' && auth.uid) ?
+                                <Link key={`${page}_Desktop`} href={page} underline="none">
                                     <Button
-                                        key={page}
+
                                         onClick={handleCloseNavMenu}
                                         sx={{ my: 2, color: 'white', display: 'block' }}
                                     >
@@ -192,7 +186,7 @@ const NavBar: React.FC = () => {
                                     </Button>
                                 </Link>
                                 :
-                                <Link key={"Test"}></Link>
+                                <Box key={`not_${page}`}></Box>
                         ))}
                     </Box>
 

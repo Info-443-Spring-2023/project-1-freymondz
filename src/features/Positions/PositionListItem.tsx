@@ -90,7 +90,7 @@ const PositionListItem = ({ accessibility, commitment,
     const [color, setColor] = useState<boolean>(false)
     React.useEffect (() => {
         if (!isEmpty(auth) && isLoaded(auth) && !isEmpty(user) && isLoaded(user)) {
-            console.log(checkEquality(user, auth, organization, name) !== '')
+            // console.log(checkEquality(user, auth, organization, name) !== '')
             setColor(checkEquality(user, auth, organization, name) !== '')
         }
     }, [auth, user])
@@ -113,7 +113,7 @@ const PositionListItem = ({ accessibility, commitment,
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
-    console.log(color)
+    // console.log(color)
     return (
         <Box paddingBottom={5}>
             <Card sx={{ display: 'flex' }}>

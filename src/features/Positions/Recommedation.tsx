@@ -41,7 +41,7 @@ const getScore = (currentPosition: any, score: number, filters: String[]) => {
         // console.log(posProperty)
         // console.log("\n")
         if (posProperty.includes(filter)) {
-            console.log(filter)
+            // console.log(filter)
             score ++
         }
     }
