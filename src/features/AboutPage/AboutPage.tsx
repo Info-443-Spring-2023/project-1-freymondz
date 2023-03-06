@@ -18,11 +18,23 @@ const AboutPage: React.FC = () => {
                 <Typography variant="body1">
                     <ul>
                         <li>
-                            1. Register & create a personalized account. 
-                            2. Find volunteer oppourtunities based on filtered interests.
-                            3. Bookmark volunteer oppourtunities to be saved and seen in personal profiles
-                            4. Have accurate information on accessible volunteer oppourtunities.
-                            5. Save service information done within their personalized profiles.
+                            Register & create a personalized account. 
+                        </li>
+
+                        <li>
+                            Find volunteer oppourtunities based on filtered interests.
+                        </li>
+
+                        <li>
+                            Bookmark volunteer oppourtunities to be saved and seen in personal profiles
+                        </li>
+
+                        <li>
+                            Have accurate information on accessible volunteer oppourtunities.
+                        </li>
+
+                        <li>
+                            Save service information done within their personalized profiles.
                         </li>
                     </ul>
                 </Typography>
