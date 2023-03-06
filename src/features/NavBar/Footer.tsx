@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Box, Container, Grid, Typography } from "@mui/material";
+import { LOGO_IMG_LOCATION } from '../../store';
 
 const Footer: React.FC = () => {
     return (
@@ -19,7 +20,7 @@ const Footer: React.FC = () => {
                             component="img"
                             sx={{height:'3rem', width:'3rem'}}
                             alt="Site Logo"
-                            src="newLogo.png"
+                            src={LOGO_IMG_LOCATION}
                         />
                     </Grid>
                     <Grid item xs={12}>

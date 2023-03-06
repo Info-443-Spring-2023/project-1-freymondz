@@ -14,6 +14,7 @@ import { connect, ConnectedProps } from "react-redux"
 import { filtersState } from "./features/FilterBar/FiltersSlice"
 import filterReducer from "./features/FilterBar/FiltersSlice"
 
+export const LOGO_IMG_LOCATION = 'https://firebasestorage.googleapis.com/v0/b/future5-7a3d2.appspot.com/o/logo%2FnewLogo.png?alt=media&token=71aaff1a-b36a-46cd-99bd-5052d0cc5d59'
 
 const rootPersistConfig = {
     key: 'root',

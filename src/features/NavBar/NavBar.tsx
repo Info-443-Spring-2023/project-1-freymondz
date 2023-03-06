@@ -1,4 +1,4 @@
-import { ExtendedFirebaseInstance, isEmpty, useFirebase, useFirebaseConnect } from "react-redux-firebase"
+import { ExtendedFirebaseInstance, isEmpty, isLoaded, useFirebase, useFirebaseConnect } from "react-redux-firebase"
 import { useAppSelector } from "../../hooks"
 import firebase from "firebase/compat/app";
 import 'firebase/compat/database';
@@ -20,7 +20,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { connect, useSelector } from "react-redux";
-import { PersistState, PropsFromRedux, store } from "../../store";
+import { LOGO_IMG_LOCATION, PersistState, PropsFromRedux, store } from "../../store";
 import { GoogleAuthProvider, getAuth, signOut } from 'firebase/auth';
 import { StyledFirebaseAuth } from "react-firebaseui";
 import { Link, Paper } from "@mui/material";
@@ -32,6 +32,8 @@ const pages = ['Home', 'About', 'Dashboard/Profile'];
 const settings = ['Logout']
 
 const NavBar: React.FC = () => {
+
+    const storage = getStorage();
 
     const firebase = useFirebase()
     // const organizations = useAppSelector(state => state.firebase.data.organizations)
@@ -56,6 +58,11 @@ const NavBar: React.FC = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const auth = useAppSelector((state) => state.firebase.auth)
+
+    const users = useAppSelector((state) => state.firebase.data.users)
+
     return (
         <AppBar position="static" style={{ background: '#374785' }}>
             <Container maxWidth="xl">
@@ -70,7 +77,7 @@ const NavBar: React.FC = () => {
 
                         }}
                         alt="Site Logo"
-                        src="newLogo.png"
+                        src={LOGO_IMG_LOCATION}
                     />
                     <Typography
                         variant="h6"
@@ -121,23 +128,48 @@ const NavBar: React.FC = () => {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                    {/* navigate to="/page" */}
                                     <Typography textAlign="center">{page}</Typography>
+                                    <Link key={page} href={page} underline="none">
+                                        <Button
+                                            key={page}
+                                            onClick={handleCloseNavMenu}
+                                            sx={{ my: 2, color: 'white', display: 'block' }}
+                                        >
+                                            {page}
+                                        </Button>
+                                    </Link>
                                 </MenuItem>
+                                // 'Home', 'About', 'Dashboard/Profile'
                             ))}
+                            {/* <MenuItem key={'Home'} onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">{'Home'}</Typography>
+                            </MenuItem>
+                            <MenuItem key={'About'} onClick={handleCloseNavMenu}>
+                                <Typography textAlign="center">{'About'}</Typography>
+                            </MenuItem>
+                            {isLoaded(auth) && !isEmpty(auth) 
+                                ?
+                                <MenuItem key={'Dashboard/Profile'} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">{'Dashboard/Profile'}</Typography>
+                                </MenuItem>
+                                : <></>
+                            } */}
+
                         </Menu>
                     </Box>
-                    
+
                     <Typography
                         variant="h5"
                         noWrap
                         component="a"
                         href=""
                         sx={{
-                            // mr: 2,
+                            mr: 2,
                             display: { xs: 'flex', md: 'none' },
                             fontSize: 14,
                             // flexGrow: 1,
-                            // fontFamily: 'monospace',
+                            fontFamily: 'monospace',
                             fontWeight: 700,
                             // letterSpacing: '.3rem',
                             color: 'inherit',
@@ -148,15 +180,19 @@ const NavBar: React.FC = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                            <Link key={page} href={page} underline="none">
-                                <Button
-                                    key={page}
-                                    onClick={handleCloseNavMenu}
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
-                                >
-                                    {page}
-                                </Button>
-                            </Link>
+                            page != 'Dashboard/Profile' ||
+                                (page == 'Dashboard/Profile' && auth.uid) ?
+                                <Link key={page} href={page} underline="none">
+                                    <Button
+                                        key={page}
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        {page}
+                                    </Button>
+                                </Link>
+                                :
+                                <></>
                         ))}
                     </Box>
 
