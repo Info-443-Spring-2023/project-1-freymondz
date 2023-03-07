@@ -39,7 +39,7 @@ const AboutPage: React.FC = () => {
                 </List> */}
 
 
-                <Typography variant="body1">Volunteering is a key importance to the development of our society & communities. Through volunteering, everyone is able to learn aout global matters & help make a change not only within their community but through the world too. Our website "FutureForward" allows our younger audience of studenst to be able to be more knowledgable on ways of helping in different sectors near them. Through our website "FutureForwrd", students can :  </Typography>
+                <Typography variant="body1">Volunteering is a key importance to the development of our society & communities. Through volunteering, everyone is able to learn about global matters & help make changes not only within their community but through the world too. Our website "FutureForward" allows our younger audience of students to be able to be more knowledgable on ways of helping in different sectors near them. Through our website "FutureForward", students can :  </Typography>
                 <List sx={{ listStyleType: 'disc', pl: 4 }} >
                     <ListItem sx={{ display: 'list-item' }}>
                         Register & create a personalized account.
@@ -63,7 +63,7 @@ const AboutPage: React.FC = () => {
                 </List>
 
                 <Typography>
-                    When developing this website for youth, we had in mind developing sustainable cities & communities to be able to make them more inclusive, safe, resilient and sustainable. The youth are the future of these cities & communities & therfore motivating them to create a sustainable city through volunteering is key for the future.
+                    When developing this website for youth, we had in mind developing sustainable cities & communities to be able to make them more inclusive, safe, resilient and sustainable. The youth are the future of these cities & communities & therefore motivating them to create a sustainable city through volunteering is key for the future.
                 </Typography>
 
                 {/* <Typography>
