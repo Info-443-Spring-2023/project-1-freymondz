@@ -1,6 +1,6 @@
 
 # Testing Protocol & Known Bugs
-A full test of the MVP would include 1) clicking on the link to the webpage and 2) going through each task listed below. The tasks below are listed in the recommended order of testing.
+A full test of the MVP would include 1) clicking on the link to the webpage and 2) going through each task listed below (the tasks below are listed in the recommended order of testing), and 3) using Lighthouse to test the website's accessibility.
 
 ## List of Tasks By Function (Recommended Order of Testing)
 
@@ -41,6 +41,15 @@ A full test of the MVP would include 1) clicking on the link to the webpage and 
     - **Expected Result:** You should be taken to the About page
 14. Click on the Youtube video (optional: click again to pause the video)
     - **Expected Result:** The Youtube video should play and should function like a typical embedded Youtube video
+
+## Testing Accessibility Using Google Lighthouse
+We tested the accessibility of our website using Google Lighthouse. Below are the steps to run Google Lighthouse.
+1. Right click on webpage and select "Inspect".
+2. On the top where it says "Elements", "Console", etc., there should also be a more tabs button (should look like double arrows), click on it.
+3. A dropdown menu should appear, click on "Lighthouse".
+4. Under "Categories" make sure "Accessibility" is checked and then click "Analyze page load".
+
+**Expected Result:** We aim for our website to have an accessibility score of over 90. 
 
 ## Known Bugs and Disclaimers
 1. **Disclaimer**: We have no control over the functionality of the external sites that open when users click on the "Sign Up" button of the volunteer positions. We can ensure that the url that is stored in our database will open in a new tab when the "Sign Up" button is clicked. All sign-up links are working as of 3/5/2023.
