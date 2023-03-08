@@ -7,7 +7,7 @@ FutureForward is a University of Washington INFO 442 web-app project created and
 
 **Our Problem Statement:** How might we help high school students discover local volunteering opportunities that align with their interests to better serve their community?
 
-The site is hosted at: put hosting URL HERE
+The site is hosted at: https://future5-7a3d2.web.app/
 
 # About FutureForward
 Futureforward's mission is to connect highschool students to volunteering opportunities that resonate with their passions and interests along with their physical needs and abilities. FutureForward aims to provide opportunties that people can activitely participate in regardless of physical abilities. 
