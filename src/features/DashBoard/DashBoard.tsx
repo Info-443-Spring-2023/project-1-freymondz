@@ -121,23 +121,6 @@ const DashBoard: React.FC = () => {
                     })
                     : <></>}
             </Box>
-
-            <Box>
-                <b>Volunteer History</b>
-                <Typography>
-                    <ul>
-
-                    </ul>
-                </Typography>
-                
-
-                <Typography>
-                    <ul>
-
-                    </ul>
-                </Typography>
-
-            </Box>
         </Box>
     )
 }
