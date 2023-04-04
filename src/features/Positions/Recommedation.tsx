@@ -1,7 +1,5 @@
-import { filter } from "lodash";
-import { FirebaseReducer, isLoaded, useFirebaseConnect } from "react-redux-firebase";
+import { FirebaseReducer } from "react-redux-firebase";
 import { Position } from "../../dbSchemas";
-import { useAppSelector } from "../../hooks";
 import { UserDataState } from "../UserDataDialog/UserDataSlice";
 
 export const recommendationFunction = (positions: [string, Position][], auth: FirebaseReducer.AuthState, filters:  String[], userData: UserDataState): [string, Position][] => {

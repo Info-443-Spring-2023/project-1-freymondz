@@ -1,16 +1,13 @@
-import { Box, Button, Chip, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Paper, Popper, Stack, TextField, ListItem, IconButton, Avatar } from '@mui/material';
+import {  Button, Chip, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,  Stack,  Avatar } from '@mui/material';
 import * as React from 'react';
 import { useAppSelector } from '../../hooks';
 import { PersistState, store } from '../../store';
-import NavBar from "../NavBar/NavBar"
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { pushUserDataAccessibility, pushUserDataInterest, setUserDataAccessibility, setUserDataEdit, setUserDataInterest, setUserDataPic } from './UserDataSlice';
-import { ReactElement, useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { isLoaded, useFirebase, useFirebaseConnect } from 'react-redux-firebase';
-import { pushSelectedInterest } from '../Interest/InterestSlice';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import { getBlob, getDownloadURL, getStorage, ref, uploadBytes } from "firebase/storage";
-import { profile } from 'console';
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 const UserDataDialog: React.FC = () => {
   const firebase = useFirebase();

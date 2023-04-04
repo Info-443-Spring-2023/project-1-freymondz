@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { Box, CardMedia, List, ListItem, Typography } from '@mui/material';
+import { Box, List, ListItem, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles'
-import { blue, green, red } from '@mui/material/colors';
 
 const AboutPage: React.FC = () => {
-
     const Video = styled('iframe')(({ theme }) => ({
         padding: theme.spacing(1),
         [theme.breakpoints.up('lg')]: {
@@ -30,8 +28,8 @@ const AboutPage: React.FC = () => {
                     </b>
                 </Typography>
 
-                
-                {/* if you want to use unorder list, please follow this format to 
+
+                {/* if you want to use unorder list, please follow this format to
                     reduce error
                     <List sx={{ listStyleType: 'disc', pl: 4 }} >
                         <ListItem sx={{ display: 'list-item' }}>

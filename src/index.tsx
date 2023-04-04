@@ -11,8 +11,7 @@ import { Provider } from 'react-redux';
 import { persistor, store } from './store';
 import { PersistGate } from 'redux-persist/integration/react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { getAuth } from 'firebase/auth';
-import HomePage from './features/HomePage/HomePage2';
+
 
 // Your web app's Firebase configuration
 const firebaseConfig = {

@@ -1,6 +1,5 @@
-import { ExtendedFirebaseInstance, isEmpty, isLoaded, useFirebase, useFirebaseConnect } from "react-redux-firebase"
+import {  isEmpty,useFirebase } from "react-redux-firebase"
 import { useAppSelector } from "../../hooks"
-import firebase from "firebase/compat/app";
 import 'firebase/compat/database';
 
 // creating nav bar
@@ -18,8 +17,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import { connect, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import { LOGO_IMG_LOCATION, PersistState, PropsFromRedux, store } from "../../store";
 import { GoogleAuthProvider, getAuth, signOut } from 'firebase/auth';
 import { StyledFirebaseAuth } from "react-firebaseui";

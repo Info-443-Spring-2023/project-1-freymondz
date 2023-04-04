@@ -1,8 +1,4 @@
-import { useSelector } from "react-redux"
 import { FirebaseReducer, isLoaded, useFirebase, useFirebaseConnect } from "react-redux-firebase"
-import { RootState } from "../../store"
-import { selectPositionId, setPositionId } from "./PositionSlice"
-
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -15,10 +11,8 @@ import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorder from "@mui/icons-material/BookmarkBorder";
-import { Link } from "@mui/material";
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';

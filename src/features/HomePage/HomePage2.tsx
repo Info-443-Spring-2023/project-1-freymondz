@@ -2,7 +2,6 @@ import * as React from 'react';
 import OrgList from "../Positions/PositionList"
 import FilterBar from "../FilterBar/FilterBar";
 import Grid from '@mui/material/Grid';
-import Footer from '../NavBar/Footer';
 import { Button, Stack } from '@mui/material';
 
 
@@ -103,7 +102,7 @@ const HomePage: React.FC = () => {
                         {open ?
                             <FilterBar />
                             :
-                            <></>}                    
+                            <></>}
                         </Grid>
                     <Grid item xs={8}>
                         <OrgList />
