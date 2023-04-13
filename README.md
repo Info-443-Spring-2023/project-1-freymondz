@@ -44,6 +44,17 @@ Run `npm install`
 
 Install new libary: `npm install lib_name`
 
+## Diagrams
+
+### Code Base UML
+
+![Code Base UML](images/Code%20Base%20UML.jpg)
+
+### Dataflow UML
+
+![Dataflow UML](images/Data%20Sequence%20UML.jpg)
+
+
 ## Available Scripts
 
 ### `npm start`
