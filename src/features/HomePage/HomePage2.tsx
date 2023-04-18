@@ -44,7 +44,7 @@ const HomePage: React.FC = () => {
                 >
                     {/* <Item xs={3} marginLeft={4}> */}
                     {!open ?
-                        <Button
+                        <Button id='filterShowcase'
                             sx={{ my: 2, color: 'white', display: 'block' }}
                             variant="contained"
                             onClick={handleHideFilter}
@@ -54,6 +54,7 @@ const HomePage: React.FC = () => {
 
                         :
                         <Button
+                            id='filterShowcase'
                             sx={{ my: 2, color: 'white', display: 'block' }}
                             variant="contained"
 

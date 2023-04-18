@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, getByText, render, screen } from '@testing-library/react';
 import './matchmedia.mock';
 import HomePage2 from './HomePage2';
 import { Provider } from 'react-redux';
@@ -40,4 +40,17 @@ describe('HomePage2', () => {
         );
         expect(baseElement).toBeTruthy();
     });
+    it ('Should show correct button', () => {
+        const { baseElement } = render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        fireEvent(
+            getByText(baseElement, 'Show Filter'),
+            new MouseEvent('click')
+        )
+        expect(getByText(baseElement, 'Show Filter')).tobe})
 });
