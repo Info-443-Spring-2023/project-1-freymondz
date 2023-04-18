@@ -18,6 +18,7 @@ const HomePage: React.FC = () => {
     const [small, setSmall] = React.useState<boolean>(false)
 
     React.useEffect(() => {
+        console.log(window.matchMedia)
         const mq_small = window.matchMedia("(max-width: 768px)")
         if (mq_small.matches) {
             setSmall(true)
