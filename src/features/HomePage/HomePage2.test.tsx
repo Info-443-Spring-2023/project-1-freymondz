@@ -1,4 +1,4 @@
-import { fireEvent, getByText, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import './matchmedia.mock';
 import HomePage2 from './HomePage2';
 import { Provider } from 'react-redux';
@@ -30,27 +30,65 @@ const rrfProps = {
 
 
 describe('HomePage2', () => {
-    it('should render successfully', () => {
-        const { baseElement } = render(
+    it('Renders sucessfully', () => {
+        render(
             <Provider store={store}>
                 <ReactReduxFirebaseProvider {...rrfProps}>
                     <HomePage2 />
                 </ReactReduxFirebaseProvider>
             </Provider>
         );
-        expect(baseElement).toBeTruthy();
+        expect(screen).toBeTruthy();
     });
-    it ('Should show correct button', () => {
-        const { baseElement } = render(
+    it('Hide/Show Filter Button', () => {
+        render(
             <Provider store={store}>
                 <ReactReduxFirebaseProvider {...rrfProps}>
                     <HomePage2 />
                 </ReactReduxFirebaseProvider>
             </Provider>
         );
-        fireEvent(
-            getByText(baseElement, 'Show Filter'),
-            new MouseEvent('click')
+        expect(screen.getByText("Show Filter")).toBeTruthy();
+        fireEvent.click(
+            screen.getByText('Show Filter')
         )
-        expect(getByText(baseElement, 'Show Filter')).tobe})
+        expect(screen.queryByText('Show Filter')).toBeFalsy();
+        fireEvent.click(
+            screen.getByText('Hide Filter')
+        )
+        expect(screen.queryByText('Hide Filter')).toBeFalsy();
+    });
+    it('Filter Bar controlled by Filter Button', () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        expect(screen.queryByText("Filters")).toBeFalsy();
+        expect(screen.queryByText("Interests")).toBeFalsy();
+        expect(screen.queryByText("Accessibilities")).toBeFalsy();
+        fireEvent.click(
+            screen.getByText('Show Filter')
+        )
+        expect(screen.getByText("Filters")).toBeTruthy();
+        expect(screen.getByText("Interests")).toBeTruthy();
+        expect(screen.getByText("Accessibilities")).toBeTruthy();
+        fireEvent.click(
+            screen.getByText('Hide Filter')
+        )
+    });
+    it("Resizing the window should change the Homepage", () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        act(() => {
+            window.innerWidth = 500;
+        });
+    });
 });
