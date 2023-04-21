@@ -1,9 +1,7 @@
 export default Object.defineProperty(window, 'matchMedia', {
-  value: () => {
-    return {
-      matches: false,
+  value: () => ({
+      matches: window.innerWidth < 768,
       addListener: () => {},
       removeListener: () => {}
-    };
-  }
+  })
 });
