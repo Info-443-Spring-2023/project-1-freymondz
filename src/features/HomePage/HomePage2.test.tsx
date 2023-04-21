@@ -91,5 +91,38 @@ describe('HomePage2', () => {
             window.innerWidth = 500;
         });
         fireEvent.resize(window);
+        expect(screen.getByTestId('small')).toBeTruthy();
+
+        act(() => {
+            window.innerWidth = 1000;
+        });
+        fireEvent.resize(window);
+        expect(screen.queryByTestId('small')).toBeFalsy();
+    });
+    it("Small Homepage shows filter", () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        )
+        act(() => {
+            window.innerWidth = 500;
+        });
+        fireEvent.resize(window);
+
+        expect(screen.queryByText("Filters")).toBeFalsy();
+        expect(screen.queryByText("Interests")).toBeFalsy();
+        expect(screen.queryByText("Accessibilities")).toBeFalsy();
+        fireEvent.click(
+            screen.getByText('Show Filter')
+        )   
+        expect(screen.getByText("Filters")).toBeTruthy();
+        expect(screen.getByText("Interests")).toBeTruthy();
+        expect(screen.getByText("Accessibilities")).toBeTruthy();
+        fireEvent.click(
+            screen.getByText('Hide Filter')
+        )
     });
 });

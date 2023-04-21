@@ -35,7 +35,7 @@ const HomePage: React.FC = () => {
     if (small) {
         return (
             <>
-                <Stack max-width="700px"
+                <Stack max-width="700px" data-testid="small"
                 // container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} marginTop={6} marginLeft={4} marginRight={4} paddingBottom={6}
                 >
                     {/* <Item xs={3} marginLeft={4}> */}
