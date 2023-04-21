@@ -40,7 +40,7 @@ describe('HomePage2', () => {
         );
         expect(screen).toBeTruthy();
     });
-    it('Hide/Show Filter Button', () => {
+    it('Show Filter Button', () => {
         render(
             <Provider store={store}>
                 <ReactReduxFirebaseProvider {...rrfProps}>
@@ -53,12 +53,138 @@ describe('HomePage2', () => {
             screen.getByText('Show Filter')
         )
         expect(screen.queryByText('Show Filter')).toBeFalsy();
+    });
+    it('Hide Filter Button', () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        expect(screen.getByText("Show Filter")).toBeTruthy();
+        fireEvent.click(
+            screen.getByText('Show Filter')
+        )
+        expect(screen.queryByText('Show Filter')).toBeFalsy();
+        expect(screen.getByText('Hide Filter')).toBeTruthy();
         fireEvent.click(
             screen.getByText('Hide Filter')
         )
         expect(screen.queryByText('Hide Filter')).toBeFalsy();
     });
-    it('Filter Bar controlled by Filter Button', () => {
+
+
+    it('Filter Bar No Filter', () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        expect(screen.queryByText("Filters")).toBeFalsy();
+    });
+
+    it('Filter Bar No Interests', () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        expect(screen.queryByText("Interests")).toBeFalsy();
+    })
+    it('Filter Bar No Accessibility', () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        expect(screen.queryByText("Accessibilities")).toBeFalsy();
+    })
+    it('Filter Bar Default State', () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        expect(screen.queryByText("Filters")).toBeFalsy();
+        expect(screen.queryByText("Interests")).toBeFalsy();
+        expect(screen.queryByText("Accessibilities")).toBeFalsy();
+    })
+    it('Filter Bar Show Filters', () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        expect(screen.queryByText("Filters")).toBeFalsy();
+        expect(screen.queryByText("Interests")).toBeFalsy();
+        expect(screen.queryByText("Accessibilities")).toBeFalsy();
+        fireEvent.click(
+            screen.getByText('Show Filter')
+        )
+        expect(screen.getByText("Filters")).toBeTruthy();
+    });
+    it('Filter Bar Show Interests', () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        expect(screen.queryByText("Filters")).toBeFalsy();
+        expect(screen.queryByText("Interests")).toBeFalsy();
+        expect(screen.queryByText("Accessibilities")).toBeFalsy();
+        fireEvent.click(
+            screen.getByText('Show Filter')
+        )
+        expect(screen.getByText("Interests")).toBeTruthy();
+    })
+    it('Filter Bar Show Accessiblities', ()=> {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        expect(screen.queryByText("Filters")).toBeFalsy();
+        expect(screen.queryByText("Interests")).toBeFalsy();
+        expect(screen.queryByText("Accessibilities")).toBeFalsy();
+        fireEvent.click(
+            screen.getByText('Show Filter')
+        )
+        expect(screen.getByText("Accessibilities")).toBeTruthy();
+    })
+    it('Filter Bar Show Filters, Interests, Accesiblities', () => {
+        render(
+            <Provider store={store}>
+                <ReactReduxFirebaseProvider {...rrfProps}>
+                    <HomePage2 />
+                </ReactReduxFirebaseProvider>
+            </Provider>
+        );
+        expect(screen.queryByText("Filters")).toBeFalsy();
+        expect(screen.queryByText("Interests")).toBeFalsy();
+        expect(screen.queryByText("Accessibilities")).toBeFalsy();
+        fireEvent.click(
+            screen.getByText('Show Filter')
+        )
+        expect(screen.getByText("Filters")).toBeTruthy();
+        expect(screen.getByText("Interests")).toBeTruthy();
+        expect(screen.getByText("Accessibilities")).toBeTruthy();
+    })
+    it('Filter Bar Switch On and Off', ()=> {
         render(
             <Provider store={store}>
                 <ReactReduxFirebaseProvider {...rrfProps}>
@@ -78,7 +204,10 @@ describe('HomePage2', () => {
         fireEvent.click(
             screen.getByText('Hide Filter')
         )
-    });
+        expect(screen.queryByText("Filters")).toBeFalsy();
+        expect(screen.queryByText("Interests")).toBeFalsy();
+        expect(screen.queryByText("Accessibilities")).toBeFalsy();
+    })
     it("Resizing the window should change the Homepage", () => {
         render(
             <Provider store={store}>
