@@ -11,30 +11,26 @@ const HomePage: React.FC = () => {
     const [open, setOpen] = React.useState<boolean>(false)
     const handleHideFilter = () => {
         setOpen(!open)
-        console.log(open)
     }
 
 
     const [small, setSmall] = React.useState<boolean>(false)
 
     React.useEffect(() => {
-        console.log(window.matchMedia)
-        const mq_small = window.matchMedia("(max-width: 768px)")
-        if (mq_small.matches) {
-            setSmall(true)
-        } else {
-            setSmall(false)
+        const resize = () => {
+            const mq_small = window.matchMedia("(max-width: 768px)")
+            if (mq_small.matches) {
+                setSmall(true)
+            } else {
+                setSmall(false)
+            }
         }
-    }, [window])
 
-    window.addEventListener('resize', (event) => {
-        const mq_small = window.matchMedia("(max-width: 768px)")
-        if (mq_small.matches) {
-            setSmall(true)
-        } else {
-            setSmall(false)
-        }
-    }, true)
+        window.addEventListener('resize', resize)
+        
+        return () => window.removeEventListener('resize', resize)
+    }, [])
+
 
     if (small) {
         return (

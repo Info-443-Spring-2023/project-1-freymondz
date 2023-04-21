@@ -90,5 +90,6 @@ describe('HomePage2', () => {
         act(() => {
             window.innerWidth = 500;
         });
+        fireEvent.resize(window);
     });
 });
