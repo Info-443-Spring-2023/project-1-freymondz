@@ -2,6 +2,26 @@
 
 ## Created by: Duy Nguyen, Audrey Dennis, Jared Lim, Liliana Garcia, and Ria Antony
 
+## Table of Contents
+
+- [Introduction](#introduction)
+- [About FutureForward](#about-futureforward)
+- [Main Features](#main-features)
+- [Set up](#set-up)
+- [Diagrams](#diagrams)
+  - [Code Base UML](#code-base-uml)
+  - [Dataflow UML](#dataflow-uml)
+- [Available Scripts](#available-scripts)
+  - [`npm start`](#npm-start)
+  - [`npm test`](#npm-test)
+  - [`npm run build`](#npm-run-build)
+- [Code Structure Analysis](#code-structure-analysis)
+  - [Architectural Elements](#architectural-elements)
+  - [Process Flows](#process-flows)
+- [Architectural Assessment](#architectural-assessment)
+- [Automated Tests](#automated-tests)
+- [Refactoring](#refactoring)
+
 ## Introduction
 
 FutureForward is a University of Washington INFO 442 web-app project created and designed to address UN Sustainable Development Goal 11: Sustainable Cities and Communities. We designed an implemented FutureForward to focus on increasing availability and accessibility of volunteering opportunities for highschool students in an effort to make cities more inclusive, resiliant and sustainable.
@@ -54,7 +74,6 @@ Install new libary: `npm install lib_name`
 
 ![Dataflow UML](images/Data%20Sequence%20UML.jpg)
 
-
 ## Available Scripts
 
 ### `npm start`
@@ -72,7 +91,6 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ![image](https://user-images.githubusercontent.com/37636251/233745680-bddf697c-a656-40dc-af61-a7e3acc2cc2a.png)
 
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -82,3 +100,15 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Code Structure Analysis
+
+### Architectural Elements
+
+### Process Flows
+
+## Architectural Assessment
+
+## Automated Tests
+
+## Refactoring
