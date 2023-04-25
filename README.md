@@ -138,6 +138,15 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## Architectural Assessment
 
+We choose to use `src/features/HomePage/HomePage2.tsx` as our architectural element to assess. There are number of code smells that we identified in this file.
+
+- Commented out code `lines: 35-75`
+- Inconsistent formatting `lines: 21, 35-111`
+- Bad variable names `lines: 11, 21`
+- Redundant conditional statements `lines: 22-24, 35,75`
+- Redundant React components `lines 42-70, 80-103`
+- Doesn't adhere to any JavaScript style guide `Entire file`
+
 ## Automated Tests
 
 ## Refactoring
