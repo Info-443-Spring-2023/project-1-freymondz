@@ -19,11 +19,7 @@ const HomePage: React.FC = () => {
     React.useEffect(() => {
         const resize = () => {
             const mq_small = window.matchMedia("(max-width: 768px)")
-            if (mq_small.matches) {
-                setSmall(true)
-            } else {
-                setSmall(false)
-            }
+            setSmall(mq_small.matches)
         }
 
         window.addEventListener('resize', resize)
