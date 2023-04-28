@@ -23,30 +23,24 @@ const HomePage: React.FC = () => {
         return () => window.removeEventListener("resize", resize);
     }, []);
 
+    const filterButton = (
+        <Button
+            id="filterShowcase"
+            sx={{ my: 2, color: "white", display: "block" }}
+            variant="contained"
+            onClick={handleHideFilter}
+        >
+            {!open ? "Show Filter" : "Hide Filter"}
+        </Button>
+    );
+
+    const filterBar = open ? <FilterBar /> : <></>;
+
     if (small) {
         return (
             <Stack max-width="700px" data-testid="small">
-                {!open ? (
-                    <Button
-                        id="filterShowcase"
-                        sx={{ my: 2, color: "white", display: "block" }}
-                        variant="contained"
-                        onClick={handleHideFilter}
-                    >
-                        Show Filter
-                    </Button>
-                ) : (
-                    <Button
-                        id="filterShowcase"
-                        sx={{ my: 2, color: "white", display: "block" }}
-                        variant="contained"
-                        onClick={handleHideFilter}
-                    >
-                        Hide Filter
-                    </Button>
-                )}
-
-                {open ? <FilterBar /> : <></>}
+                {filterButton}
+                {filterBar}
                 <OrgList />
             </Stack>
         );
@@ -62,24 +56,8 @@ const HomePage: React.FC = () => {
             paddingBottom={6}
         >
             <Grid item xs={3} marginLeft={4}>
-                {!open ? (
-                    <Button
-                        sx={{ my: 2, color: "white", display: "block" }}
-                        variant="contained"
-                        onClick={handleHideFilter}
-                    >
-                        Show Filter
-                    </Button>
-                ) : (
-                    <Button
-                        sx={{ my: 2, color: "white", display: "block" }}
-                        variant="contained"
-                        onClick={handleHideFilter}
-                    >
-                        Hide Filter
-                    </Button>
-                )}
-                {open ? <FilterBar /> : <></>}
+                {filterButton}
+                {filterBar}
             </Grid>
             <Grid item xs={8}>
                 <OrgList />
