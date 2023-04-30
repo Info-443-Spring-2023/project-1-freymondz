@@ -152,6 +152,7 @@ We choose to use `src/features/HomePage/HomePage2.tsx` as our architectural elem
 The unit tests for `HomePage2.tsx` can be found in the same directory as the component under `src/features/HomePage/`. Use `npm test` to run the unit tests.
 
 The unit tests test the following:
+
 - Renders without crashing
 - Shows the `show filter` button in it's default state
 - Hides the `show filter` button when a user clicks on it
@@ -159,7 +160,7 @@ The unit tests test the following:
 - Shows the filter bar when a user clicks on the `show filter` button
 - Validates the state of the filter bar when a user clicks on the `show filter` button
 - Verifies filter bar it togglable
-- Home page resizes when the window width is small enough 
+- Home page resizes when the window width is small enough
 - Filter button works when the window width is small enough
 
 ### Coverage
@@ -169,3 +170,5 @@ The unit tests test the following:
 Jest will generate a coverage report of every component in the project but we only have unit tests for `HomePage2.tsx`. `matchmedia.mock.ts` is a Jest mock that mocks `window.matchMedia()` so that we can test the responsiveness of the home page.
 
 ## Refactoring
+
+We used prettier to standarize the styling/formatting of the code. Double quotes instead of single quotes, using semicolons, consistent spacing, etc. We also removed commented out code and cleaned up redundant conditional statements. Variable names were standardized to camel case and the control flow for the home page was simplified. Instead of copying and pasting the filter bar and filter button for each size of the screen we used a variables and ternary operators to determine the state of the filter button and whether to render the fitler bar or not. During the writing of our tests we also identified and fixed an issue with our event listener and useEffect(). Originally the event listener was being added to the window every time the component was rendered. This caused the event listener to be called multiple times when the window was resized. We fixed this by adding a cleanup function to useEffect() that removes the event listener when the component is unmounted.
