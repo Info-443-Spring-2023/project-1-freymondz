@@ -8,9 +8,6 @@
 - [About FutureForward](#about-futureforward)
 - [Main Features](#main-features)
 - [Set up](#set-up)
-- [Diagrams](#diagrams)
-  - [Code Base UML](#code-base-uml)
-  - [Dataflow UML](#dataflow-uml)
 - [Available Scripts](#available-scripts)
   - [`npm start`](#npm-start)
   - [`npm test`](#npm-test)
@@ -63,16 +60,6 @@ Install [Node.js](https://nodejs.org/en)
 Run `npm install`
 
 Install new libary: `npm install lib_name`
-
-## Diagrams
-
-### Code Base UML
-
-![Code Base UML](images/Code%20Base%20UML.jpg)
-
-### Dataflow UML
-
-![Dataflow UML](images/Data%20Sequence%20UML.jpg)
 
 ## Available Scripts
 
@@ -135,6 +122,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
       - `UserDataDialog.tsx` - React component that renders the user data dialog. Relies on mui components for styling. Allows the user to to setup their profile. Relies on React/mui, Redux, and Firebase. Uses `UserDataSlice` to store the user data.
       - `UserDataSlice.tsx` - Contains the redux slice that is used to store the user data. Also exposes typing for the redux slice. Relies on Redux.
 
+![Code Base UML](images/Code%20Base%20UML.jpg) Code Base UML
+
+This is a UML diagram of the code base. The diagram shows how the different components of the application interact with each other.
+
 ### Process Flows
 
 The System starts within `index.tsx`, where React will render the application and initialize Redux and its extension libraries such as React Redux Firebase and Persist. This is also where the application will create a connection with Firebase.
@@ -178,6 +169,8 @@ If the application detects the user is on a mobile screen, All components will r
 ![Figure 8. Full Diagram of the Process Flow](https://user-images.githubusercontent.com/37636251/235555873-069415b3-82af-4bb0-a381-21faf5c7b60e.png) Figure 8. Full Diagram of the Process Flow
 
 <https://drive.google.com/file/d/12rnkNfLJ53l4yL5beCGnDC1Evb5R8wJe/view?usp=sharing> (Full Diagram Link)
+
+The above Process flow diagram outlines how the system determines what to render and how data is updated.
 
 ## Architectural Assessment
 
