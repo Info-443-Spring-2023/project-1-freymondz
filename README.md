@@ -107,32 +107,33 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 `FutureForward` is a React web application that uses Firebase for authentication and database storage. The application is structured into the following components:
 
-- `index.tsx` - This is the main entry point that renders the entire application. It also initializes the Firebase app and redux store.
-- `App.tsx` - The main application component that renders the navbar, footer, and the main content of the application. This component also handles routing to different pages. This component would be the main user facing page.
+- `index.tsx` - This is the main entry point that renders the entire application. It also initializes the Firebase app and redux store. Relies on React, Redux, and Firebase.
+- `store.ts` - This is the redux store that is used to store the state of the application. Relies on component level slices for typing/reduces. It also exposes reducers that are used throughout the application. Relies on Redux.
+- `App.tsx` - The main application component that renders the navbar, footer, and the main content of the application. This component also handles routing to different pages. This component would be the main user facing page. Relies on components from `src/features` for rendering the main content of the application. Relies on React Router for routing.
   - `src/features` - Contains the React components that are used to render the different pages of the application.
-    - `AboutPage/AboutPage.tsx` - React component that renders the about page. Relies on mui components for styling. The component itself is a basic about page that describes the purpose of `FutureForward`. There is also a embedded video that describes why volunteering is important.
-    - `Dashboard/Dashboard.tsx` - React component that renders the dashboard page. Relies on mui components for styling. The component itself is a basic dashboard that displays the list of volunteer opportunities that the user has bookmarked. The component also allows the user to filter the list of bookmarked volunteer opportunities.
+    - `AboutPage/AboutPage.tsx` - React component that renders the about page. Relies on mui components for styling. A basic about page that describes the purpose of `FutureForward`. There is also a embedded video that describes why volunteering is important. Relies on React/mui
+    - `Dashboard/Dashboard.tsx` - React component that renders the dashboard page. Relies on mui components for styling. Dashboard that displays the list of volunteer opportunities that the user has bookmarked. The component also allows the user to filter the list of bookmarked volunteer opportunities. Relies on React/mui, Redux, and Firebase. Also renders `PositionListItem`.
     - `FilterBar/`
-      - `FilterBar.tsx` - React component that renders the filter bar. Relies on mui components for styling. The component itself is a basic filter bar that allows users to filter the list of volunteer opportunities by category, time commitment, and accessibility.
-      - `FilterBarHelpers.ts` - Contains helper functions that are used to filter the list of volunteer opportunities.
-      - `FilterList.tsx` - React component that renders the filter list. Relies on mui components for styling. The component itself is a basic filter list that displays the list of filters that the user has selected.
-      - `FiltersSlice.ts` - Contains the redux slice that is used to store the list of filters that the user has selected.
+      - `FilterBar.tsx` - React component that renders the filter bar. Relies on mui components for styling. A filter bar that allows users to filter the list of volunteer opportunities. Renders `FilterList` and relies on React/mui.
+      - `FilterBarHelpers.ts` - File that does nothing. Has no dependencies or dependents.
+      - `FilterList.tsx` - React component that renders the filter list. Relies on mui components for styling and React. Displays the list of filters that the user has selected.
+      - `FiltersSlice.ts` - Contains the redux slice that is used to store the list of filters that the user has selected. Also exposes typing for the redux slice. Relies on Redux.
     - `HomePage/`
-      - `HomePage2.tsx` - React component that renders the home page. Relies on mui components for styling. The component itself is a basic home page that displays the list of volunteer opportunities. The component also allows the user to filter the list of volunteer opportunities.
-      - `HomePage2.test.tsx` - Contains the unit tests for the home page.
-      - `matchmedia.mock.ts` - Contains the mock for the matchmedia library.
-    - `Interest/InterestSlice.tsx` - Contains the redux slice that is used to store the list of interests that the user has selected.
+      - `HomePage2.tsx` - React component that renders the home page. Relies on mui components for styling and React. Home page that displays the list of volunteer opportunities and navigation. The component also allows the user to filter the list of volunteer opportunities. Renders the `FilterBar` and `PositionList` component.
+      - `HomePage2.test.tsx` - Contains the unit tests for the home page. Uses `matchmedia.mock` to properly test the `HomePage2` component. Relies on redux, firebase, and React Testing Library.
+      - `matchmedia.mock.ts` - Contains the Jest mock for the matchmedia library.
+    - `Interest/InterestSlice.tsx` - Contains the redux slice that is used to store the list of interests that the user has selected for volunteering. Also exposes typing for the redux slice. Relies on Redux.
     - `NavBar/`
-      - `NavBar.tsx` - React component that renders the navbar. Relies on mui components for styling. The component itself is a basic navbar that allows the user to navigate to different pages of the application.
-      - `Footer.tsx` - React component that renders the footer. Relies on mui components for styling. The component itself is a basic footer that displays the list of links to the different pages of the application.
+      - `NavBar.tsx` - React component that renders the navbar. Relies on mui components for styling. Navbar that allows the user to navigate to different pages of the application. Relies on React/mui, Redux, and Firebase.
+      - `Footer.tsx` - React component that renders the footer. Relies on mui components for styling. The component itself is a basic footer. Relies on React/mui.
     - `Positions/`
-      - `PositionList.tsx` - React component that renders the list of volunteer opportunities. Relies on mui components for styling. The component itself is a basic list of volunteer opportunities that displays the list of volunteer opportunities that the user has bookmarked. The component also allows the user to filter the list of bookmarked volunteer opportunities.
-      - `PositionListItem.tsx` - React component that renders a single volunteer opportunity. Relies on mui components for styling. The component itself is a basic volunteer opportunity that displays the details of a single volunteer opportunity.
-      - `PositionSlice.ts` - Contains the redux slice that is used to store the list of volunteer opportunities.
-      - `Recommedation.tsx` - React component that renders the recommendation. Relies on mui components for styling. The component itself is a basic recommendation that displays the list of volunteer opportunities that the user might be interested in.
+      - `PositionList.tsx` - React component that renders the list of volunteer opportunities. Relies on mui components for styling. Is a basic list of volunteer opportunities. The component also allows the user to filter the list of bookmarked volunteer opportunities. Relies on React/mui, Redux, and Firebase. Also renders `PositionListItem`.
+      - `PositionListItem.tsx` - React component that renders a single volunteer opportunity. Relies on mui components for styling. Displays the details of a single volunteer opportunity. Relies on React/mui, Redux, and Firebase.
+      - `PositionSlice.ts` - Contains the redux slice that is used to store the list of volunteer opportunities. Also exposes typing for the redux slice. Relies on Redux.
+      - `Recommedation.tsx` - This is file is defined as a React component but only exposes TS functions. The functions help sort volunteer opportunities based on the user's interests. Relies on `userDataSlice` for typing.
     - `UserDataDialog/`
-      - `UserDataDialog.tsx` - React component that renders the user data dialog. Relies on mui components for styling. The component itself is a basic user data dialog that allows the user to enter their name and select their interests.
-      - `UserDataSlice.tsx` - Contains the redux slice that is used to store the user data.
+      - `UserDataDialog.tsx` - React component that renders the user data dialog. Relies on mui components for styling. Allows the user to to setup their profile. Relies on React/mui, Redux, and Firebase. Uses `UserDataSlice` to store the user data.
+      - `UserDataSlice.tsx` - Contains the redux slice that is used to store the user data. Also exposes typing for the redux slice. Relies on Redux.
 
 ### Process Flows
 
